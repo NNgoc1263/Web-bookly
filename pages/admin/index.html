@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="vi" data-admin-guard>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>BOOKLY - Admin</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap">
+    <link rel="icon" href="../../assets/images/logo-bookly.png">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css?v=2">
+    <script src="../../assets/js/admin/auth.js"></script>
+  </head>
+  <body>
+    <div class="flash" id="saved">Lưu sản phẩm thành công</div>
+    <div class="flash flash-info" id="deleted-1">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-2">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-3">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-4">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-5">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-6">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-7">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash flash-info" id="deleted-8">Sản phẩm đã có đơn hàng nên được ẩn khỏi website, không xóa</div>
+    <div class="flash" id="confirm-DH1030">Đã xác nhận đơn #DH1030</div>
+    <div class="flash flash-cancel" id="cancel-DH1030">Đã hủy đơn #DH1030</div>
+    <div class="flash" id="confirm-DH1029">Đã xác nhận đơn #DH1029</div>
+    <div class="flash flash-cancel" id="cancel-DH1029">Đã hủy đơn #DH1029</div>
+    <div class="flash flash-ship" id="ship-DH1028">Đơn #DH1028 đã chuyển sang đang giao</div>
+    <div class="flash flash-cancel" id="cancel-DH1028">Đã hủy đơn #DH1028</div>
+    <div class="flash flash-done" id="done-DH1027">Đơn #DH1027 đã giao thành công</div>
+    <div class="flash flash-done" id="done-DH1025">Đơn #DH1025 đã giao thành công</div>
+    <div class="flash flash-ship" id="ship-DH1024">Đơn #DH1024 đã chuyển sang đang giao</div>
+    <div class="flash flash-cancel" id="cancel-DH1024">Đã hủy đơn #DH1024</div>
+    <div class="flash" id="customer-saved">Đã lưu khách hàng thành công!</div>
+    <div class="flash flash-lock" id="lock-KH001">Đã khóa tài khoản Nguyễn Minh Anh</div>
+    <div class="flash flash-delete" id="delete-KH001">Đã xóa khách hàng Nguyễn Minh Anh</div>
+    <div class="flash flash-lock" id="lock-KH002">Đã khóa tài khoản Trần Hoàng Nam</div>
+    <div class="flash flash-delete" id="delete-KH002">Đã xóa khách hàng Trần Hoàng Nam</div>
+    <div class="flash flash-lock" id="lock-KH003">Đã khóa tài khoản Lê Ngọc Mai</div>
+    <div class="flash flash-delete" id="delete-KH003">Đã xóa khách hàng Lê Ngọc Mai</div>
+    <div class="flash flash-lock" id="lock-KH004">Đã khóa tài khoản Phạm Gia Hân</div>
+    <div class="flash flash-delete" id="delete-KH004">Đã xóa khách hàng Phạm Gia Hân</div>
+    <div class="flash flash-lock" id="lock-KH005">Đã khóa tài khoản Võ Minh Khang</div>
+    <div class="flash flash-delete" id="delete-KH005">Đã xóa khách hàng Võ Minh Khang</div>
+    <div class="flash flash-lock" id="lock-KH006">Đã khóa tài khoản Đặng Thu Hà</div>
+    <div class="flash flash-delete" id="delete-KH006">Đã xóa khách hàng Đặng Thu Hà</div>
+    <div class="flash flash-unlock" id="unlock-KH007">Đã mở khóa tài khoản Bùi Quốc Bảo</div>
+    <div class="flash flash-delete" id="delete-KH007">Đã xóa khách hàng Bùi Quốc Bảo</div>
+    <div class="flash flash-lock" id="lock-KH008">Đã khóa tài khoản Hoàng Lan Chi</div>
+    <div class="flash flash-delete" id="delete-KH008">Đã xóa khách hàng Hoàng Lan Chi</div>
+    <div class="confirm-box" id="confirm-del-9">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item9.png" alt="Bìa sách Truyện cổ Grimm">
+      <p>Bạn có chắc muốn xóa <b>Truyện cổ Grimm</b> (SP009)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-9">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-9">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-10">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item10.png" alt="Bìa sách Pháp y Tần Minh 1">
+      <p>Bạn có chắc muốn xóa <b>Pháp y Tần Minh 1</b> (SP010)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-10">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-10">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-11">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item11.png" alt="Bìa sách Tiếng nói tử thi">
+      <p>Bạn có chắc muốn xóa <b>Tiếng nói tử thi</b> (SP011)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-11">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-11">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-12">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item12.png" alt="Bìa sách Tội lỗi không chứng cứ">
+      <p>Bạn có chắc muốn xóa <b>Tội lỗi không chứng cứ</b> (SP012)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-12">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-12">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-13">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item13.png" alt="Bìa sách Hoa vẫn nở mỗi ngày">
+      <p>Bạn có chắc muốn xóa <b>Hoa vẫn nở mỗi ngày</b> (SP013)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-13">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-13">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-14">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item14.png" alt="Bìa sách Hai số phận">
+      <p>Bạn có chắc muốn xóa <b>Hai số phận</b> (SP014)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-14">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-14">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-15">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item15.png" alt="Bìa sách Con Rồng cháu Tiên">
+      <p>Bạn có chắc muốn xóa <b>Con Rồng cháu Tiên</b> (SP015)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-15">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-15">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-16">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item16.png" alt="Bìa sách Thánh Gióng">
+      <p>Bạn có chắc muốn xóa <b>Thánh Gióng</b> (SP016)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-16">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-16">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-17">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item17.png" alt="Bìa sách Cô Bé Quàng Khăn Đỏ">
+      <p>Bạn có chắc muốn xóa <b>Cô Bé Quàng Khăn Đỏ</b> (SP017)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-17">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-17">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-18">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item18.png" alt="Bìa sách Thỏ Bảy Màu">
+      <p>Bạn có chắc muốn xóa <b>Thỏ Bảy Màu</b> (SP018)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-18">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-18">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-19">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item19.png" alt="Bìa sách Thám tử lừng danh Conan 18">
+      <p>Bạn có chắc muốn xóa <b>Thám tử lừng danh Conan 18</b> (SP019)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-19">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-19">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-20">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item20.png" alt="Bìa sách Shin - Cậu bé bút chì 14">
+      <p>Bạn có chắc muốn xóa <b>Shin - Cậu bé bút chì 14</b> (SP020)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-20">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-20">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-21">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item21.png" alt="Bìa sách Lịch sử Việt Nam - Tập 8">
+      <p>Bạn có chắc muốn xóa <b>Lịch sử Việt Nam - Tập 8</b> (SP021)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-21">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-21">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-22">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item22.png" alt="Bìa sách Đinh Bộ Lĩnh">
+      <p>Bạn có chắc muốn xóa <b>Đinh Bộ Lĩnh</b> (SP022)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-22">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-22">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-23">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item23.png" alt="Bìa sách Think and Grow Rich">
+      <p>Bạn có chắc muốn xóa <b>Think and Grow Rich</b> (SP023)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-23">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-23">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-24">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item24.png" alt="Bìa sách Trò chơi tư duy (Thinkertoys)">
+      <p>Bạn có chắc muốn xóa <b>Trò chơi tư duy (Thinkertoys)</b> (SP024)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-24">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-24">Đã xóa sản phẩm thành công</div>
+<div class="confirm-box" id="confirm-del-25">
+  <div class="confirm-card">
+    <h3>Xóa sản phẩm?</h3>
+    <div class="confirm-body">
+      <img class="confirm-thumb" src="../../assets/images/product-item25.png" alt="Bìa sách Trò chơi của những kẻ hiểu luật">
+      <p>Bạn có chắc muốn xóa <b>Trò chơi của những kẻ hiểu luật</b> (SP025)? Sản phẩm chưa có đơn hàng nào nên sẽ bị xóa hẳn.</p>
+    </div>
+    <div class="confirm-actions">
+      <a class="admin-btn" href="#products">Hủy</a>
+      <a class="admin-btn admin-btn-danger" href="#deleted-25">Xóa</a>
+    </div>
+  </div>
+</div>
+<div class="flash flash-delete" id="deleted-25">Đã xóa sản phẩm thành công</div>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <h2>BOOKLY</h2>
+        <p class="text-center">ADMIN PANEL</p>
+        <a href="index.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg><span>Tổng quan</span></a>
+        <a href="index.html#customers"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Quản lý khách hàng</span></a>
+        <a href="index.html#products"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></svg><span>Quản lý sản phẩm</span></a>
+        <a href="index.html#orders"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg><span>Quản lý đơn hàng</span></a>
+        <a href="index.html#stats"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Thống kê</span></a>
+        <a href="../../index.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Về website</span></a>
+        <a href="login.html" class="admin-logout"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M20 12H9"/></svg><span>Đăng xuất</span></a>
+      </aside>
+      <section class="admin-main">
+        <h1>Trang quản trị</h1>
+        <p>Giao diện quản trị website bán sách</p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Khách hàng</span>
+            <h2>1.248</h2>
+            +12 hôm nay
+          </div>
+          <div class="stat">
+            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M4 16a4 4 0 0 1 4-4h10"/></svg>Sản phẩm</span>
+            <h2>10888</h2>
+            Đang hiển thị
+          </div>
+          <div class="stat">
+            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg>Đơn hàng</span>
+            <h2>86</h2>
+            Trong tháng
+          </div>
+          <div class="stat">
+            <span class="stat-label"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5C9.5 8.5 10.6 8 12 8s2.5.6 2.5 1.6S13.4 11 12 11.3 9.5 12 9.5 13.2 10.6 15 12 15s2.5-.5 2.5-1.5"/></svg>Doanh thu</span>
+            <h2>18,6M</h2>
+            Trong tháng
+          </div>
+        </div>
+        <div class="admin-box" id="customers">
+          <h2 class="has-btn">Quản lý khách hàng <a class="btn btn-sm" href="#customer-form" data-add="customer">+ Thêm khách hàng</a></h2>
+          <div class="customer-form" id="customer-form">
+            <a class="back-link arrow-back" href="#customers">Quay lại danh sách khách hàng</a>
+            <h3 id="cf-title">Thêm khách hàng</h3>
+            <form class="form" id="customer-edit-form" action="index.html#customer-saved" method="get">
+              <label>Họ tên<input id="cf-name" placeholder="Nhập họ tên"></label>
+              <label>Email<input id="cf-email" type="email" placeholder="email@example.com"></label>
+              <label>Số điện thoại<input id="cf-phone" placeholder="09xx xxx xxx"></label>
+              <label>Trạng thái<select id="cf-status"><option>Hoạt động</option><option>Đã khóa</option></select></label>
+              <div class="full"><button class="btn" type="submit">LƯU KHÁCH HÀNG</button></div>
+            </form>
+          </div>
+          <form class="admin-toolbar" action="index.html#customers" method="get">
+            <input type="search" name="q" placeholder="Tìm theo tên hoặc email...">
+            <button class="admin-search-btn" type="submit">Tìm</button>
+            <select name="status"><option>Tất cả trạng thái</option><option>Hoạt động</option><option>Đã khóa</option></select>
+          </form>
+          <div class="table-scroll"><table class="admin-table">
+            <tr>
+              <th>Mã</th>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Ngày đăng ký</th>
+              <th>Số đơn</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+            <tr>
+              <td>KH001</td>
+              <td>Nguyễn Minh Anh</td>
+              <td>minhanh@email.com</td>
+              <td>12/01/2026</td>
+              <td>8</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH001" data-name="Nguyễn Minh Anh" data-email="minhanh@email.com" data-phone="0912 345 678" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH001">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH001">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH002</td>
+              <td>Trần Hoàng Nam</td>
+              <td>nam@email.com</td>
+              <td>20/01/2026</td>
+              <td>6</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH002" data-name="Trần Hoàng Nam" data-email="nam@email.com" data-phone="0938 221 904" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH002">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH002">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH003</td>
+              <td>Lê Ngọc Mai</td>
+              <td>ngocmai@email.com</td>
+              <td>03/02/2026</td>
+              <td>5</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH003" data-name="Lê Ngọc Mai" data-email="ngocmai@email.com" data-phone="0975 410 236" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH003">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH003">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH004</td>
+              <td>Phạm Gia Hân</td>
+              <td>giahan@email.com</td>
+              <td>15/02/2026</td>
+              <td>4</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH004" data-name="Phạm Gia Hân" data-email="giahan@email.com" data-phone="0903 667 815" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH004">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH004">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH005</td>
+              <td>Võ Minh Khang</td>
+              <td>minhkhang@email.com</td>
+              <td>01/03/2026</td>
+              <td>4</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH005" data-name="Võ Minh Khang" data-email="minhkhang@email.com" data-phone="0987 120 453" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH005">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH005">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH006</td>
+              <td>Đặng Thu Hà</td>
+              <td>thuha@email.com</td>
+              <td>18/03/2026</td>
+              <td>2</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH006" data-name="Đặng Thu Hà" data-email="thuha@email.com" data-phone="0966 358 072" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH006">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH006">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH007</td>
+              <td>Bùi Quốc Bảo</td>
+              <td>quocbao@email.com</td>
+              <td>07/04/2026</td>
+              <td>0</td>
+              <td><span class="status status-cancel">Đã khóa</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH007" data-name="Bùi Quốc Bảo" data-email="quocbao@email.com" data-phone="0919 784 306" data-status="Đã khóa">Sửa</a>
+                <a class="admin-btn" href="#unlock-KH007">Mở khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH007">Xóa</a>
+              </td>
+            </tr>
+            <tr>
+              <td>KH008</td>
+              <td>Hoàng Lan Chi</td>
+              <td>lanchi@email.com</td>
+              <td>22/04/2026</td>
+              <td>1</td>
+              <td><span class="status status-done">Hoạt động</span></td>
+              <td>
+                <a class="admin-btn" href="#customer-form" data-edit="customer" data-code="KH008" data-name="Hoàng Lan Chi" data-email="lanchi@email.com" data-phone="0944 513 927" data-status="Hoạt động">Sửa</a>
+                <a class="admin-btn" href="#lock-KH008">Khóa</a>
+                <a class="admin-btn admin-btn-danger" href="#delete-KH008">Xóa</a>
+              </td>
+            </tr>
+          </table></div>
+          <div class="admin-pager">
+            <div class="pagination"><a href="#" aria-label="Trang trước">‹</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><span class="dots">…</span><a href="#">156</a><a href="#" aria-label="Trang sau">›</a></div>
+          </div>
+        </div>
+        <div class="admin-split" id="products">
+          <div class="admin-box">
+            <h2>Quản lý sản phẩm <a class="btn btn-sm" href="#product-form" data-add="product">+ Thêm sản phẩm</a></h2>
+            <form class="admin-toolbar" action="index.html#products" method="get">
+              <input type="search" name="q" placeholder="Tìm theo tên hoặc mã sách...">
+              <button class="admin-search-btn" type="submit">Tìm</button>
+            </form>
+            <div class="table-scroll"><table class="admin-table" id="product-table">
+              <tr>
+                <th>Mã</th>
+                <th>Hình</th>
+                <th>Sản phẩm</th>
+                <th>Phân loại</th>
+                <th>Giá</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+              </tr>
+            <tr>
+                <td>SP001</td>
+                <td><img class="thumb" src="../../assets/images/product-item1.png" alt="Nhà Giả Kim"></td>
+                <td>Nhà Giả Kim</td>
+                <td>Tiểu thuyết</td>
+                <td>68.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP001" data-name="Nhà Giả Kim" data-cat="Tiểu thuyết" data-author="Paulo Coelho" data-pub="NXB Hội Nhà Văn" data-pubyear="1988" data-binding="Bìa mềm" data-pages="228" data-size="13 x 20.5 cm" data-lang="Tiếng Việt" data-price="68000" data-qty="124" data-status="Đang bán" data-hl="Văn phong nhẹ nhàng, giàu chất triết lý&#10;Dễ đọc, có thể đọc xong trong vài buổi tối&#10;Đọc lại ở mỗi giai đoạn cuộc sống đều có cảm nhận mới" data-desc="Hành trình của chàng chăn cừu Santiago băng qua sa mạc để tìm kho báu bên Kim tự tháp, và nhận ra điều quý giá nhất nằm ngay trên con đường mình đi. Cuốn sách nhỏ về việc lắng nghe giấc mơ của chính mình." data-desc2="Câu chuyện giản dị mà giàu biểu tượng, được dịch ra hàng chục ngôn ngữ và đồng hành cùng nhiều thế hệ độc giả. Mỗi chặng đường của Santiago là một lời nhắc về lòng can đảm theo đuổi ước mơ và biết lắng nghe trái tim mình." data-fit="Bạn đọc yêu thích tiểu thuyết truyền cảm hứng, người đang tìm động lực để theo đuổi mục tiêu của riêng mình." data-img="../../assets/images/product-item1.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-1">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP002</td>
+                <td><img class="thumb" src="../../assets/images/product-item2.png" alt="Cây tre trăm đốt"></td>
+                <td>Cây tre trăm đốt</td>
+                <td>Cổ tích</td>
+                <td>79.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP002" data-name="Cây tre trăm đốt" data-cat="Cổ tích" data-author="Truyện dân gian Việt Nam" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="40" data-size="19 x 26 cm" data-lang="Tiếng Việt" data-price="79000" data-qty="86" data-status="Đang bán" data-hl="Tranh minh họa sinh động, màu sắc ấm áp&#10;Lời kể ngắn gọn, dễ nhớ cho trẻ nhỏ&#10;Gửi gắm bài học về lòng tốt và sự công bằng" data-desc="Câu chuyện về anh nông dân hiền lành bị lão địa chủ gian xảo bắt làm thuê, và cây tre thần có thể biến thành vàng khi nghe câu thần chú “Khắc nhập, khắc nhập”. Một cổ tích đậm chất Việt, dạy cho trẻ nhỏ rằng người tốt sẽ gặp may mắn còn lòng tham sẽ bị trừng phạt." data-desc2="Truyện dân gian quen thuộc được kể lại bằng ngôn ngữ trong sáng, nhịp điệu vui tai, phù hợp để cha mẹ đọc cho con nghe trước giờ đi ngủ. Qua câu chuyện, các em nhỏ hiểu rằng người hiền lành, chăm chỉ sẽ được đền đáp." data-fit="Trẻ từ 4 tuổi trở lên và các bậc phụ huynh muốn xây dựng thói quen đọc sách cùng con." data-img="../../assets/images/product-item2.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-2">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP003</td>
+                <td><img class="thumb" src="../../assets/images/product-item3.png" alt="Sherlock Holmes"></td>
+                <td>Sherlock Holmes</td>
+                <td>Trinh thám</td>
+                <td>95.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP003" data-name="Sherlock Holmes" data-cat="Trinh thám" data-author="Arthur Conan Doyle" data-pub="NXB Văn Học" data-pubyear="1887" data-binding="Bìa mềm" data-pages="560" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="95000" data-qty="58" data-status="Đang bán" data-hl="Tuyển tập các vụ án kinh điển của thể loại trinh thám&#10;Cách suy luận từng bước, rèn luyện tư duy logic&#10;Bối cảnh nước Anh thời Victoria đầy màu sắc" data-desc="Tuyển tập những vụ án kinh điển của thám tử lừng danh phố Baker, nơi từng chi tiết nhỏ như vết bùn trên giày hay tàn thuốc trên sàn đều trở thành manh mối. Cùng bác sĩ Watson theo chân Holmes giải những bí ẩn đầy kịch tính giữa London sương mù." data-desc2="Những vụ án hóc búa được phá giải bằng quan sát tỉ mỉ và suy luận logic của thám tử lừng danh phố Baker, qua lời kể của bác sĩ Watson. Tác phẩm đặt nền móng cho thể loại trinh thám cổ điển và vẫn cuốn hút đến ngày nay." data-fit="Người yêu thích truy tìm manh mối, suy luận và những câu chuyện trinh thám kinh điển." data-img="../../assets/images/product-item3.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-3">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP004</td>
+                <td><img class="thumb" src="../../assets/images/product-item4.png" alt="Doraemon"></td>
+                <td>Doraemon</td>
+                <td>Truyện tranh</td>
+                <td>55.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP004" data-name="Doraemon" data-cat="Truyện tranh" data-author="Fujiko F. Fujio" data-pub="NXB Kim Đồng" data-pubyear="1969" data-binding="Bìa mềm" data-pages="192" data-size="11.3 x 17.6 cm" data-lang="Tiếng Việt" data-price="55000" data-qty="140" data-status="Đang bán" data-hl="Những mẩu chuyện ngắn, đọc lúc nào cũng được&#10;Nội dung vui nhộn, an toàn cho lứa tuổi thiếu nhi&#10;Khổ sách nhỏ gọn, tiện mang theo" data-desc="Chú mèo máy đến từ thế kỷ 22 cùng chiếc túi thần kỳ luôn giúp cậu bé Nobita thoát khỏi đủ rắc rối. Mỗi tập là những bảo bối bất ngờ, tiếng cười hồn nhiên và bài học nhẹ nhàng về tình bạn, sự chăm chỉ cho độc giả mọi lứa tuổi." data-desc2="Chú mèo máy đến từ thế kỷ 22 cùng bảo bối thần kỳ luôn giúp Nobita vượt qua những rắc rối đời thường. Mỗi tập là nhiều mẩu chuyện ngắn hài hước, nhẹ nhàng, thích hợp cho cả thiếu nhi và người lớn." data-fit="Thiếu nhi và những ai muốn tìm lại tuổi thơ qua nhân vật quen thuộc." data-img="../../assets/images/product-item4.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-4">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP005</td>
+                <td><img class="thumb" src="../../assets/images/product-item5.png" alt="Điện Biên Phủ"></td>
+                <td>Điện Biên Phủ</td>
+                <td>Lịch sử</td>
+                <td>145.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP005" data-name="Điện Biên Phủ" data-cat="Lịch sử" data-author="Võ Nguyên Giáp" data-pub="NXB Trẻ" data-pubyear="1964" data-binding="Bìa mềm" data-pages="320" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="145000" data-qty="32" data-status="Đang bán" data-hl="Góc nhìn của người trực tiếp tham gia chỉ huy&#10;Tư liệu và bản đồ chiến dịch rõ ràng&#10;Phù hợp để học tập và nghiên cứu lịch sử" data-desc="Ghi chép về chiến dịch Điện Biên Phủ năm 1954 từ góc nhìn của người trực tiếp chỉ huy: từ quyết định “đánh chắc, tiến chắc”, công tác hậu cần xuyên rừng núi đến những ngày đêm quyết định làm nên chiến thắng chấn động địa cầu." data-desc2="Tác phẩm tái hiện diễn biến chiến dịch qua từng giai đoạn chuẩn bị, vận chuyển và chiến đấu, cho thấy tầm quan trọng của quyết định thay đổi phương châm tác chiến. Văn phong mạch lạc, tư liệu phong phú, giúp người đọc hiểu sâu một trang sử hào hùng." data-fit="Học sinh, sinh viên, giáo viên và những ai quan tâm đến lịch sử quân sự Việt Nam." data-img="../../assets/images/product-item5.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-5">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP006</td>
+                <td><img class="thumb" src="../../assets/images/product-item6.png" alt="Lược sử về loài người"></td>
+                <td>Lược sử về loài người</td>
+                <td>Lịch sử</td>
+                <td>135.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP006" data-name="Lược sử về loài người" data-cat="Lịch sử" data-author="Yuval Noah Harari" data-pub="NXB Tri Thức" data-pubyear="2011" data-binding="Bìa mềm" data-pages="560" data-size="15.5 x 23 cm" data-lang="Tiếng Việt" data-price="135000" data-qty="71" data-status="Đang bán" data-hl="Tóm lược hàng chục nghìn năm lịch sử nhân loại&#10;Lập luận sắc sảo, dễ theo dõi&#10;Gợi mở nhiều câu hỏi để suy ngẫm và thảo luận" data-desc="Hành trình 70.000 năm của loài Homo sapiens, từ những cuộc cách mạng nhận thức, nông nghiệp đến khoa học hiện đại. Harari đặt ra những câu hỏi lớn về tôn giáo, tiền tệ, đế chế và hạnh phúc, giúp ta nhìn lại chính mình bằng một góc nhìn mới mẻ." data-desc2="Từ thời kỳ săn bắt hái lượm đến kỷ nguyên công nghệ, cuốn sách đặt ra những câu hỏi lớn về nông nghiệp, tiền tệ, tôn giáo và đế chế. Lối kể hấp dẫn, nhiều góc nhìn mới giúp người đọc nhìn lại lịch sử nhân loại theo cách rất khác." data-fit="Bạn đọc thích sách khoa học nhân văn, lịch sử và những góc nhìn mang tính tổng quan." data-img="../../assets/images/product-item6.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-6">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP007</td>
+                <td><img class="thumb" src="../../assets/images/product-item7.png" alt="Tội Ác Và Hình Phạt"></td>
+                <td>Tội Ác Và Hình Phạt</td>
+                <td>Tiểu thuyết</td>
+                <td>88.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP007" data-name="Tội Ác Và Hình Phạt" data-cat="Tiểu thuyết" data-author="Fyodor Dostoevsky" data-pub="NXB Văn Học" data-pubyear="1866" data-binding="Bìa mềm" data-pages="656" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="88000" data-qty="96" data-status="Đang bán" data-hl="Kiệt tác tiểu thuyết tâm lý của văn học Nga&#10;Nhân vật được khắc họa sâu sắc, nhiều tầng lớp&#10;Đặt ra những vấn đề đạo đức vẫn còn nguyên giá trị" data-desc="Tiểu thuyết kinh điển của Dostoevsky về Raskolnikov, chàng sinh viên nghèo ở Saint Petersburg tin rằng mình có quyền phạm tội vì một mục đích lớn lao. Sau án mạng, anh bị lương tâm giày vò trong một cuộc giằng xé dữ dội giữa lý trí, tội lỗi và sự cứu rỗi." data-desc2="Qua nhân vật chàng sinh viên nghèo Raskolnikov, tác giả đi sâu vào những giằng xé của lương tâm, tội lỗi và sự cứu rỗi. Đây là một trong những tiểu thuyết tâm lý có sức ảnh hưởng lớn nhất của văn học thế giới." data-fit="Bạn đọc muốn tiếp cận văn học kinh điển và những tác phẩm giàu chiều sâu tư tưởng." data-img="../../assets/images/product-item7.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-7">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP008</td>
+                <td><img class="thumb" src="../../assets/images/product-item8.png" alt="Đắc nhân tâm"></td>
+                <td>Đắc nhân tâm</td>
+                <td>Phát triển bản thân</td>
+                <td>52.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP008" data-name="Đắc nhân tâm" data-cat="Phát triển bản thân" data-author="Dale Carnegie" data-pub="NXB Tổng Hợp TP.HCM" data-pubyear="1936" data-binding="Bìa mềm" data-pages="320" data-size="13 x 20.5 cm" data-lang="Tiếng Việt" data-price="52000" data-qty="42" data-status="Đang bán" data-hl="Nguyên tắc rõ ràng, ví dụ gần gũi&#10;Áp dụng được ngay trong giao tiếp hằng ngày&#10;Cuốn sách kinh điển về nghệ thuật đối nhân xử thế" data-desc="Cuốn sách kinh điển về nghệ thuật giao tiếp: cách tạo thiện cảm, lắng nghe, khen ngợi chân thành và thuyết phục người khác mà không gây phản cảm. Những nguyên tắc giản dị nhưng hiệu quả, áp dụng được trong công việc lẫn đời sống hằng ngày." data-desc2="Những nguyên tắc ứng xử được đúc kết từ trải nghiệm thực tế: quan tâm chân thành đến người khác, biết lắng nghe, khen ngợi đúng lúc và tránh tranh cãi vô ích. Mỗi chương đều có ví dụ cụ thể, dễ áp dụng vào công việc và cuộc sống." data-fit="Người đi làm, sinh viên và bất kỳ ai muốn cải thiện kỹ năng giao tiếp và xây dựng các mối quan hệ." data-img="../../assets/images/product-item8.png">Sửa</a>
+                  <a class="admin-btn" href="#deleted-8">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+              <td>SP009</td>
+              <td><img class="thumb" src="../../assets/images/product-item9.png" alt="Truyện cổ Grimm"></td>
+              <td>Truyện cổ Grimm</td>
+              <td>Cổ tích</td>
+              <td>72.000 ₫</td>
+              <td><span class="status status-wait">Chưa đăng bán</span></td>
+              <td>
+                <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP009" data-name="Truyện cổ Grimm" data-cat="Cổ tích" data-author="Anh em Grimm" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="96" data-size="19 x 26 cm" data-lang="Tiếng Việt" data-price="72000" data-qty="40" data-status="Chưa đăng bán" data-hl="Tuyển chọn những truyện cổ Grimm quen thuộc&#10;Tranh minh họa sinh động, màu sắc ấm áp&#10;Lời kể trong sáng, dễ đọc cho trẻ nhỏ" data-desc="Tuyển tập truyện cổ tích Grimm quen thuộc, phù hợp để đọc cho trẻ nhỏ." data-desc2="Những câu chuyện kinh điển được kể lại bằng ngôn ngữ trong sáng, giàu hình ảnh, gửi gắm bài học về lòng tốt, sự dũng cảm và niềm tin vào điều thiện." data-fit="Trẻ từ 4 tuổi trở lên và các bậc phụ huynh muốn xây dựng thói quen đọc sách cùng con." data-img="../../assets/images/product-item9.png">Sửa</a>
+                <a class="admin-btn" href="#confirm-del-9">Xóa</a>
+              </td>
+            </tr>
+              <tr>
+                <td>SP010</td>
+                <td><img class="thumb" src="../../assets/images/product-item10.png" alt="Pháp y Tần Minh 1"></td>
+                <td>Pháp y Tần Minh 1</td>
+                <td>Trinh thám</td>
+                <td>149.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP010" data-name="Pháp y Tần Minh 1" data-cat="Trinh thám" data-author="Tần Minh" data-pub="NXB Văn Học" data-pubyear="2012" data-binding="Bìa mềm" data-pages="392" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="149000" data-qty="64" data-status="Đang bán" data-hl="Kiến thức pháp y đan xen trong từng vụ án&#10;Tình tiết chặt chẽ, nhiều bước ngoặt&#10;Nhịp truyện nhanh, khó đặt sách xuống" data-desc="Tập 1 “Người giải mã tử thi” của series pháp y ăn khách, do chính một bác sĩ pháp y viết nên. Từ những vết tích nhỏ nhất trên thi thể, Tần Minh cùng đồng nghiệp lần ra sự thật phía sau từng vụ án mạng, nơi người chết không thể lên tiếng nhưng vẫn để lại đầy đủ manh mối cho ai đủ kiên nhẫn đọc chúng." data-desc2="Câu chuyện xoay quanh những vụ án mạng được làm sáng tỏ nhờ các dấu vết nhỏ nhất trên hiện trường và thi thể. Nhịp truyện nhanh, các tình tiết được cài cắm khéo léo, mang đến cảm giác hồi hộp từ đầu đến cuối." data-fit="Người hâm mộ truyện trinh thám, hình sự và những câu chuyện phá án dựa trên khoa học." data-img="../../assets/images/product-item10.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-10">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP011</td>
+                <td><img class="thumb" src="../../assets/images/product-item11.png" alt="Tiếng nói tử thi"></td>
+                <td>Tiếng nói tử thi</td>
+                <td>Trinh thám</td>
+                <td>135.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP011" data-name="Tiếng nói tử thi" data-cat="Trinh thám" data-author="Cửu Bích Thủy" data-pub="NXB Văn Học" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="376" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="135000" data-qty="48" data-status="Đang bán" data-hl="Cốt truyện nhiều lớp, kết thúc bất ngờ&#10;Cách điều tra logic, bám sát chứng cứ&#10;Văn phong gãy gọn, phù hợp thể loại trinh thám" data-desc="Tiểu thuyết trinh thám – pháp y đầy ám ảnh, xoay quanh những thi thể “biết nói” qua từng dấu vết nhỏ. Mỗi vụ án là một cuộc đấu trí căng thẳng giữa người đi tìm sự thật và kẻ tưởng rằng mình đã xóa sạch mọi dấu vết." data-desc2="Mỗi vụ án là một câu đố cần được giải bằng sự tinh tế và kiên nhẫn của người điều tra. Cái kết thường nằm ngoài dự đoán, khiến người đọc phải suy nghĩ lại toàn bộ chi tiết đã đọc trước đó." data-fit="Bạn đọc thích suy luận, đoán hung thủ và các câu chuyện hình sự kịch tính." data-img="../../assets/images/product-item11.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-11">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP012</td>
+                <td><img class="thumb" src="../../assets/images/product-item12.png" alt="Tội lỗi không chứng cứ"></td>
+                <td>Tội lỗi không chứng cứ</td>
+                <td>Trinh thám</td>
+                <td>139.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP012" data-name="Tội lỗi không chứng cứ" data-cat="Trinh thám" data-author="Tử Kim Trần" data-pub="NXB Văn Học" data-pubyear="2014" data-binding="Bìa mềm" data-pages="408" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="139000" data-qty="52" data-status="Đang bán" data-hl="Các vụ án khó với nhiều lớp bí ẩn&#10;Mạch truyện cuốn hút, đủ hồi hộp&#10;Gợi mở về cái giá của tội lỗi và công lý" data-desc="Một chuỗi vụ án mạng xảy ra mà hung thủ không để lại bất kỳ chứng cứ nào. Cuộc đối đầu giữa cảnh sát và kẻ giết người khéo léo đặt ra câu hỏi day dứt: nếu không có chứng cứ thì liệu công lý có thể được thực thi? Truyện hấp dẫn bởi nhịp kể nhanh và những lớp suy luận bất ngờ." data-desc2="Một chuỗi vụ án tưởng như không còn dấu vết, nhưng từng chi tiết nhỏ dần được ghép lại để tìm ra sự thật. Tác phẩm kết hợp yếu tố tâm lý, hình sự và những suy luận sắc bén." data-fit="Người thích truyện hình sự, kịch tính và những cuộc đấu trí giữa người điều tra và hung thủ." data-img="../../assets/images/product-item12.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-12">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP013</td>
+                <td><img class="thumb" src="../../assets/images/product-item13.png" alt="Hoa vẫn nở mỗi ngày"></td>
+                <td>Hoa vẫn nở mỗi ngày</td>
+                <td>Tiểu thuyết</td>
+                <td>169.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP013" data-name="Hoa vẫn nở mỗi ngày" data-cat="Tiểu thuyết" data-author="Valérie Perrin" data-pub="NXB Hội Nhà Văn" data-pubyear="2018" data-binding="Bìa mềm" data-pages="560" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="169000" data-qty="37" data-status="Đang bán" data-hl="Câu chuyện giàu cảm xúc, nhiều lớp ký ức đan xen&#10;Văn phong tinh tế, giàu hình ảnh&#10;Gợi cho người đọc nhiều suy ngẫm về cuộc sống" data-desc="Violette Toussaint làm người gác nghĩa trang ở một thị trấn nhỏ nước Pháp. Giữa những ngôi mộ, bà lắng nghe và chăm sóc hoa cho người ở lại, trong khi bí mật của chính bà dần được hé lộ. Một câu chuyện dịu dàng về tình yêu, mất mát và sức mạnh của việc tiếp tục sống mỗi ngày. Ấn bản bìa cứng sang trọng." data-desc2="Cuốn tiểu thuyết kể về một người phụ nữ chọn cuộc sống bình yên bên nghĩa trang, nơi những câu chuyện của người đã khuất dần mở ra những bí mật của chính cô. Lối viết dịu dàng, nhiều cảm xúc về mất mát, tình yêu và hy vọng." data-fit="Bạn đọc yêu thích tiểu thuyết văn học nhẹ nhàng, sâu lắng và nhiều cảm xúc." data-img="../../assets/images/product-item13.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-13">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP014</td>
+                <td><img class="thumb" src="../../assets/images/product-item14.png" alt="Hai số phận"></td>
+                <td>Hai số phận</td>
+                <td>Tiểu thuyết</td>
+                <td>139.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP014" data-name="Hai số phận" data-cat="Tiểu thuyết" data-author="Jeffrey Archer" data-pub="NXB Văn Học" data-pubyear="1979" data-binding="Bìa mềm" data-pages="712" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="139000" data-qty="58" data-status="Đang bán" data-hl="Cốt truyện kịch tính trải dài nhiều thập kỷ&#10;Hai nhân vật chính đối lập, nhiều giằng co&#10;Cuốn tiểu thuyết bán chạy của văn học Anh" data-desc="Hai người đàn ông sinh cùng ngày nhưng ở hai thế giới khác biệt: William Kane là con trai của một chủ ngân hàng giàu có ở Boston, Abel Rosnovski là cậu bé mồ côi người Ba Lan. Hai số phận song hành, cùng vươn lên và va chạm trong một mối thù kéo dài suốt nhiều thập kỷ. Cuốn tiểu thuyết kinh điển về tham vọng, danh dự và định mệnh." data-desc2="Hai con người sinh ra cùng ngày nhưng ở hai thái cực xuất thân, cuộc đời họ đan xen qua nhiều thập kỷ với tình bạn, đối đầu và những lựa chọn khắc nghiệt. Tác phẩm hấp dẫn nhờ tình tiết dồn dập và các nhân vật đầy cá tính." data-fit="Người thích tiểu thuyết dài hơi, nhiều biến cố và những câu chuyện về nghị lực vươn lên." data-img="../../assets/images/product-item14.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-14">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP015</td>
+                <td><img class="thumb" src="../../assets/images/product-item15.png" alt="Con Rồng cháu Tiên"></td>
+                <td>Con Rồng cháu Tiên</td>
+                <td>Cổ tích</td>
+                <td>68.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP015" data-name="Con Rồng cháu Tiên" data-cat="Cổ tích" data-author="Trần Bạch Đằng (chủ biên)" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="64" data-size="19 x 26 cm" data-lang="Tiếng Việt" data-price="68000" data-qty="90" data-status="Đang bán" data-hl="Kể lại truyền thuyết quen thuộc bằng lời văn dễ hiểu&#10;Tranh minh họa đẹp, giàu màu sắc dân gian&#10;Giáo dục lòng tự hào về nguồn cội" data-desc="Tập mở đầu bộ “Lịch sử Việt Nam bằng tranh”, kể lại truyền thuyết Lạc Long Quân và Âu Cơ: từ cuộc trừ diệt yêu quái, bọc trăm trứng, đến lúc năm mươi con theo cha xuống biển, năm mươi con theo mẹ lên non. Tranh vẽ sinh động, lời kể dễ hiểu, thích hợp cho các bạn nhỏ tìm hiểu cội nguồn dân tộc." data-desc2="Truyện kể về nguồn gốc dân tộc từ mối duyên giữa Lạc Long Quân và Âu Cơ, giải thích hai tiếng “đồng bào” thiêng liêng. Phù hợp để giới thiệu cho trẻ nhỏ về cội nguồn và truyền thống dân tộc." data-fit="Thiếu nhi, học sinh tiểu học và các gia đình muốn kể cho con nghe truyền thuyết dân tộc." data-img="../../assets/images/product-item15.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-15">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP016</td>
+                <td><img class="thumb" src="../../assets/images/product-item16.png" alt="Thánh Gióng"></td>
+                <td>Thánh Gióng</td>
+                <td>Cổ tích</td>
+                <td>45.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP016" data-name="Thánh Gióng" data-cat="Cổ tích" data-author="Nguyệt Giang (sưu tầm và biên soạn)" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="32" data-size="19 x 26 cm" data-lang="Tiếng Việt" data-price="45000" data-qty="120" data-status="Đang bán" data-hl="Lời kể ngắn gọn, dễ đọc cho trẻ nhỏ&#10;Hình ảnh người anh hùng sống động&#10;Bồi đắp tình yêu quê hương đất nước" data-desc="Truyền thuyết về cậu bé làng Phù Đổng lên ba vẫn chưa biết nói, nghe tiếng sứ giả tìm người tài đánh giặc Ân bỗng cất lời xin roi sắt, ngựa sắt. Vươn vai thành tráng sĩ, Gióng cưỡi ngựa phun lửa dẹp tan quân giặc rồi bay về trời. Một trong những câu chuyện đẹp nhất về lòng yêu nước trong kho tàng cổ tích Việt Nam." data-desc2="Câu chuyện về cậu bé làng Phù Đổng bỗng lớn nhanh như thổi để đánh giặc cứu nước là biểu tượng của lòng yêu nước và sức mạnh đoàn kết. Bản kể ngắn gọn, nhiều tranh, rất phù hợp với các em nhỏ." data-fit="Trẻ mầm non, tiểu học và phụ huynh muốn chọn truyện dân gian giàu ý nghĩa cho con." data-img="../../assets/images/product-item16.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-16">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP017</td>
+                <td><img class="thumb" src="../../assets/images/product-item17.png" alt="Cô Bé Quàng Khăn Đỏ"></td>
+                <td>Cô Bé Quàng Khăn Đỏ</td>
+                <td>Cổ tích</td>
+                <td>65.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP017" data-name="Cô Bé Quàng Khăn Đỏ" data-cat="Cổ tích" data-author="Stefania Leonardi Hartley" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="24" data-size="21 x 25 cm" data-lang="Tiếng Việt" data-price="65000" data-qty="95" data-status="Đang bán" data-hl="Cổ tích kinh điển quen thuộc với mọi lứa tuổi&#10;Hình minh họa nhiều màu sắc, dễ thu hút bé&#10;Lồng ghép bài học về an toàn và cẩn trọng" data-desc="Cô bé khoác chiếc khăn choàng đỏ mang giỏ bánh vào rừng thăm bà và gặp phải con sói gian xảo. Câu chuyện cổ tích quen thuộc được kể lại bằng lời văn trong sáng cùng tranh minh họa sinh động, nhắc các em nhỏ luôn nghe lời dặn của người lớn. Thuộc bộ “Ngày xửa ngày xưa...”." data-desc2="Phiên bản kể lại câu chuyện cổ tích nổi tiếng với tranh vẽ ấm áp và ngôn từ giản dị. Câu chuyện nhắc các bé về sự cẩn trọng, biết nghe lời dặn và luôn cảnh giác trước người lạ." data-fit="Trẻ từ 3 đến 8 tuổi và những gia đình thích đọc sách tranh cùng con." data-img="../../assets/images/product-item17.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-17">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP018</td>
+                <td><img class="thumb" src="../../assets/images/product-item18.png" alt="Thỏ Bảy Màu"></td>
+                <td>Thỏ Bảy Màu</td>
+                <td>Truyện tranh</td>
+                <td>79.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP018" data-name="Thỏ Bảy Màu" data-cat="Truyện tranh" data-author="Huỳnh Thái Ngọc" data-pub="NXB Thanh Niên" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="128" data-size="14 x 20 cm" data-lang="Tiếng Việt" data-price="79000" data-qty="150" data-status="Đang bán" data-hl="Nét vẽ dễ thương, màu sắc tươi vui&#10;Tình huống hài hước, nhiều thông điệp nhẹ nhàng&#10;Đọc nhanh, thích hợp làm quà tặng" data-desc="Cuốn truyện tranh “Thỏ Bảy Màu và những người nghĩ nó là bạn” gồm những mẩu chuyện ngắn về chú thỏ trắng tròn trịa Thỏ Bảy Màu: lầy lội, “tỉnh bơ” và luôn khiến người xung quanh dở khóc dở cười. Nét vẽ đơn giản, dễ thương cùng những tình huống đời thường hài hước, đọc đâu cũng thấy bóng dáng của chính mình và bạn bè." data-desc2="Những mẩu truyện tranh hài hước với nhân vật chú thỏ nhiều màu sắc, đưa người đọc đến những tình huống bất ngờ và thông điệp ngộ nghĩnh. Nét vẽ dễ thương, phù hợp để thư giãn sau một ngày dài." data-fit="Bạn đọc trẻ và những ai yêu thích truyện tranh vui nhộn, nhẹ nhàng." data-img="../../assets/images/product-item18.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-18">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP019</td>
+                <td><img class="thumb" src="../../assets/images/product-item19.png" alt="Thám tử lừng danh Conan 18"></td>
+                <td>Thám tử lừng danh Conan 18</td>
+                <td>Truyện tranh</td>
+                <td>30.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP019" data-name="Thám tử lừng danh Conan 18" data-cat="Truyện tranh" data-author="Gosho Aoyama" data-pub="NXB Kim Đồng" data-pubyear="1994" data-binding="Bìa mềm" data-pages="192" data-size="11.3 x 17.6 cm" data-lang="Tiếng Việt" data-price="30000" data-qty="140" data-status="Đang bán" data-hl="Vụ án mới với nhiều nút thắt hấp dẫn&#10;Nét vẽ chi tiết, hình ảnh rõ ràng&#10;Rèn luyện khả năng quan sát và suy luận" data-desc="Tập 18 của bộ truyện trinh thám nổi tiếng: cậu học sinh thiên tài Shinichi bị teo nhỏ thành cậu bé Conan vẫn tiếp tục dùng suy luận sắc bén để phá những vụ án hóc búa, vừa lần theo dấu vết của Tổ chức Áo Đen. Mỗi tập là một loạt manh mối đáng nhớ và những pha lật ngược bất ngờ." data-desc2="Cậu học sinh thiên tài bị thu nhỏ vẫn tiếp tục phá những vụ án hóc búa bằng trí tuệ và sự quan sát nhạy bén. Mỗi tập có những vụ án mới với tình tiết ly kỳ và cách giải rất logic." data-fit="Độc giả yêu thích truyện tranh trinh thám, từ thiếu niên đến người lớn." data-img="../../assets/images/product-item19.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-19">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP020</td>
+                <td><img class="thumb" src="../../assets/images/product-item20.png" alt="Shin - Cậu bé bút chì 14"></td>
+                <td>Shin - Cậu bé bút chì 14</td>
+                <td>Truyện tranh</td>
+                <td>30.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP020" data-name="Shin - Cậu bé bút chì 14" data-cat="Truyện tranh" data-author="Yoshito Usui" data-pub="NXB Kim Đồng" data-pubyear="1990" data-binding="Bìa mềm" data-pages="176" data-size="11.3 x 17.6 cm" data-lang="Tiếng Việt" data-price="30000" data-qty="130" data-status="Đang bán" data-hl="Tình huống hài hước đời thường&#10;Nhân vật quen thuộc, dễ gần&#10;Khổ sách nhỏ, mang đi đâu cũng tiện" data-desc="Phiên bản hoạt hình màu của bộ truyện hài nổi tiếng về cậu nhóc Shin nghịch ngợm và gia đình Nohara. Ở tập 14, cô em Himawari lần đầu làm mẫu cho tạp chí, mở ra những tình huống náo loạn ở giới showbiz. Tiếng cười dành cho cả trẻ em lẫn người lớn." data-desc2="Những câu chuyện thường ngày của cậu bé tinh nghịch cùng gia đình và bạn bè luôn khiến người đọc bật cười. Nội dung hài hước, dí dỏm, thích hợp để đọc giải trí." data-fit="Bạn đọc thích truyện tranh hài hước, giải trí nhẹ nhàng." data-img="../../assets/images/product-item20.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-20">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP021</td>
+                <td><img class="thumb" src="../../assets/images/product-item21.png" alt="Lịch sử Việt Nam - Tập 8"></td>
+                <td>Lịch sử Việt Nam - Tập 8</td>
+                <td>Lịch sử</td>
+                <td>265.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP021" data-name="Lịch sử Việt Nam - Tập 8" data-cat="Lịch sử" data-author="Tạ Thị Thúy (chủ biên)" data-pub="NXB Khoa Học Xã Hội" data-pubyear="2017" data-binding="Bìa cứng" data-pages="552" data-size="16 x 24 cm" data-lang="Tiếng Việt" data-price="265000" data-qty="25" data-status="Đang bán" data-hl="Biên soạn bài bản, nhiều tư liệu tham khảo&#10;Bố cục rõ ràng theo từng giai đoạn&#10;Phù hợp làm tài liệu học tập và nghiên cứu" data-desc="Tập 8 trong bộ Lịch sử Việt Nam do Viện Sử học (Viện Hàn lâm Khoa học xã hội Việt Nam) biên soạn, trình bày giai đoạn 1919–1930: chính sách khai thác thuộc địa lần thứ hai của thực dân Pháp, những chuyển biến về kinh tế, xã hội và văn hóa, cùng sự phát triển của phong trào dân tộc dân chủ, chuẩn bị cho sự ra đời của Đảng. Sách tham khảo giá trị cho người nghiên cứu và yêu thích lịch sử." data-desc2="Công trình biên soạn công phu trình bày diễn biến lịch sử một giai đoạn quan trọng của dân tộc, dựa trên nguồn tư liệu chọn lọc và phương pháp nghiên cứu nghiêm túc. Sách có giá trị tham khảo cao cho việc học tập và nghiên cứu." data-fit="Giáo viên, sinh viên chuyên ngành sử học và những ai quan tâm đến lịch sử Việt Nam." data-img="../../assets/images/product-item21.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-21">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP022</td>
+                <td><img class="thumb" src="../../assets/images/product-item22.png" alt="Đinh Bộ Lĩnh"></td>
+                <td>Đinh Bộ Lĩnh</td>
+                <td>Lịch sử</td>
+                <td>45.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP022" data-name="Đinh Bộ Lĩnh" data-cat="Lịch sử" data-author="Nhiều tác giả" data-pub="NXB Kim Đồng" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="128" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="45000" data-qty="80" data-status="Đang bán" data-hl="Kể lại cuộc đời nhân vật lịch sử bằng lời văn dễ hiểu&#10;Có minh họa hỗ trợ việc ghi nhớ&#10;Gợi niềm tự hào về lịch sử dân tộc" data-desc="Thuộc bộ “Tranh truyện lịch sử Việt Nam”, cuốn sách kể về Đinh Bộ Lĩnh: cậu bé chăn trâu lấy bông lau làm cờ tập trận, lớn lên dẹp loạn mười hai sứ quân, thống nhất đất nước, lên ngôi hoàng đế và đặt quốc hiệu Đại Cồ Việt. Tranh vẽ công phu, lời kể gọn gàng, phù hợp cho thiếu nhi." data-desc2="Câu chuyện về vị anh hùng dẹp loạn thập nhị sứ quân, thống nhất đất nước và lập nên nhà nước phong kiến đầu tiên của người Việt. Lời kể giản dị, phù hợp với học sinh và bạn đọc phổ thông." data-fit="Học sinh, phụ huynh và những ai muốn tìm hiểu về các nhân vật lịch sử Việt Nam." data-img="../../assets/images/product-item22.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-22">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP023</td>
+                <td><img class="thumb" src="../../assets/images/product-item23.png" alt="Think and Grow Rich"></td>
+                <td>Think and Grow Rich</td>
+                <td>Phát triển bản thân</td>
+                <td>119.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP023" data-name="Think and Grow Rich" data-cat="Phát triển bản thân" data-author="Napoleon Hill" data-pub="NXB Lao Động" data-pubyear="1937" data-binding="Bìa mềm" data-pages="320" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="119000" data-qty="88" data-status="Đang bán" data-hl="Các nguyên tắc thành công được trình bày mạch lạc&#10;Nhiều câu chuyện minh họa truyền cảm hứng&#10;Gợi ý cách đặt mục tiêu và hành động" data-desc="Cuốn sách kinh điển về tư duy thành công, đúc kết 13 nguyên tắc nghĩ giàu, làm giàu từ nhiều năm nghiên cứu cuộc đời những người thành đạt. Phiên bản gốc được phục hồi và chỉnh sửa bởi Ross Cornwell, giữ lại tinh thần nguyên bản và bổ sung chú giải giúp bạn đọc hôm nay dễ tiếp cận hơn." data-desc2="Dựa trên quan sát những người thành công, cuốn sách trình bày các nguyên tắc từ khát vọng, niềm tin, kiên trì đến sức mạnh của tư duy tập trung. Nhiều câu chuyện được kể lại sinh động, tạo động lực hành động." data-fit="Người đi làm, sinh viên và những ai đang xây dựng sự nghiệp hoặc khởi nghiệp." data-img="../../assets/images/product-item23.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-23">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP024</td>
+                <td><img class="thumb" src="../../assets/images/product-item24.png" alt="Trò chơi tư duy (Thinkertoys)"></td>
+                <td>Trò chơi tư duy (Thinkertoys)</td>
+                <td>Phát triển bản thân</td>
+                <td>135.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP024" data-name="Trò chơi tư duy (Thinkertoys)" data-cat="Phát triển bản thân" data-author="Michael Michalko" data-pub="NXB Trẻ" data-pubyear="1991" data-binding="Bìa mềm" data-pages="448" data-size="16 x 24 cm" data-lang="Tiếng Việt" data-price="135000" data-qty="56" data-status="Đang bán" data-hl="Nhiều phương pháp tư duy sáng tạo thực hành được&#10;Bài tập cuối mỗi phần giúp ghi nhớ&#10;Hữu ích cho học tập, công việc và giải quyết vấn đề" data-desc="Sổ tay thủ thuật tư duy sáng tạo gồm hàng chục kỹ thuật thực hành giúp bạn nghĩ khác đi, tìm ra nhiều ý tưởng mới cho công việc và cuộc sống. Mỗi kỹ thuật đều có hướng dẫn rõ ràng và bài tập áp dụng, phù hợp cho người làm sáng tạo, kinh doanh lẫn học tập." data-desc2="Tổng hợp nhiều kỹ thuật sáng tạo giúp người đọc nhìn vấn đề từ nhiều hướng khác nhau, phá vỡ lối mòn tư duy. Mỗi phần có bài tập ứng dụng để thực hành ngay." data-fit="Người làm sáng tạo, học sinh, sinh viên và nhân sự cần tìm ý tưởng mới." data-img="../../assets/images/product-item24.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-24">Xóa</a>
+                </td>
+              </tr>
+              <tr>
+                <td>SP025</td>
+                <td><img class="thumb" src="../../assets/images/product-item25.png" alt="Trò chơi của những kẻ hiểu luật"></td>
+                <td>Trò chơi của những kẻ hiểu luật</td>
+                <td>Phát triển bản thân</td>
+                <td>129.000 ₫</td>
+                <td><span class="status">Đang bán</span></td>
+                <td>
+                  <a class="admin-btn" href="#product-form" data-edit="product" data-code="SP025" data-name="Trò chơi của những kẻ hiểu luật" data-cat="Phát triển bản thân" data-author="Dan Nicholson" data-pub="NXB Thế Giới" data-pubyear="Tái bản mới" data-binding="Bìa mềm" data-pages="304" data-size="14.5 x 20.5 cm" data-lang="Tiếng Việt" data-price="129000" data-qty="45" data-status="Đang bán" data-hl="Góc nhìn thực tế về quy tắc và chiến lược&#10;Ví dụ dễ hiểu, gần với đời sống&#10;Gợi ý cách ra quyết định thông minh hơn" data-desc="Chiến lược thay đổi tư duy, làm chủ tinh thần và kiểm soát rủi ro để hiện thực hóa mục tiêu tài chính. Tác giả chỉ ra những “luật chơi” ngầm quanh tiền bạc và cách người hiểu luật tận dụng chúng, từ đó giúp bạn xây dựng thói quen và quyết định tài chính vững vàng hơn." data-desc2="Cuốn sách phân tích cách những người hiểu luật chơi nhìn nhận và vận dụng quy tắc để đạt lợi thế trong công việc, kinh doanh và các mối quan hệ. Nội dung mang tính thực tiễn, gợi nhiều suy nghĩ." data-fit="Người đi làm, chủ doanh nghiệp nhỏ và bạn đọc quan tâm đến chiến lược, ra quyết định." data-img="../../assets/images/product-item25.png">Sửa</a>
+                  <a class="admin-btn" href="#confirm-del-25">Xóa</a>
+                </td>
+              </tr>
+            </table></div>
+            <div class="admin-pager">
+              <div class="pagination" id="product-pager"></div>
+            </div>
+          </div>
+          <div class="admin-box" id="product-form">
+            <a class="back-link arrow-back" href="#products">Quay lại danh sách sản phẩm</a>
+            <h2 id="pf-title">Thêm sản phẩm</h2>
+            <form class="pf" id="product-edit-form" action="index.html#saved" method="get">
+              <div class="pf-main">
+                <section class="pf-card">
+                  <h3>Thông tin cơ bản</h3>
+                  <div class="pf-fields">
+                    <label class="full">Tên sách<input id="pf-name" placeholder="Nhập tên sách"></label>
+                    <label>Tác giả<input id="pf-author" placeholder="VD: Paulo Coelho"></label>
+                    <label>Phân loại<select id="pf-cat"><option>Tiểu thuyết</option><option>Cổ tích</option><option>Trinh thám</option><option>Truyện tranh</option><option>Lịch sử</option><option>Phát triển bản thân</option></select></label>
+                    <label>Mã sản phẩm<input id="pf-code" placeholder="VD: SP026"></label>
+                  </div>
+                </section>
+                <section class="pf-card">
+                  <h3>Thông tin xuất bản</h3>
+                  <div class="pf-fields">
+                    <label>Nhà xuất bản<input id="pf-pub" placeholder="VD: NXB Kim Đồng"></label>
+                    <label>Năm xuất bản<input id="pf-year" placeholder="VD: 2018 hoặc Tái bản mới"></label>
+                    <label>Hình thức<select id="pf-binding"><option>Bìa mềm</option><option>Bìa cứng</option></select></label>
+                    <label>Số trang<input id="pf-pages" type="number" min="1" step="1" placeholder="VD: 320"></label>
+                    <label>Kích thước<input id="pf-size" placeholder="VD: 14.5 x 20.5 cm"></label>
+                    <label>Ngôn ngữ<input id="pf-lang" placeholder="VD: Tiếng Việt"></label>
+                  </div>
+                </section>
+                <section class="pf-card">
+                  <h3>Nội dung giới thiệu</h3>
+                  <p class="pf-hint">Hiển thị ở trang chi tiết sách trên website.</p>
+                  <div class="pf-fields">
+                    <label class="full">Điểm nổi bật<textarea id="pf-hl" rows="3" placeholder="Mỗi dòng là một điểm nổi bật..."></textarea><small>Mỗi ý một dòng, nên có 3 ý.</small></label>
+                    <label class="full">Mô tả - đoạn 1<textarea id="pf-desc" rows="4" placeholder="Mô tả sản phẩm..."></textarea></label>
+                    <label class="full">Mô tả - đoạn 2<textarea id="pf-desc2" rows="4" placeholder="Giới thiệu thêm về sản phẩm..."></textarea></label>
+                    <label class="full">Phù hợp với<textarea id="pf-fit" rows="2" placeholder="Đối tượng bạn đọc phù hợp..."></textarea></label>
+                  </div>
+                </section>
+              </div>
+              <aside class="pf-side">
+                <section class="pf-card">
+                  <h3>Ảnh bìa</h3>
+                  <div class="pf-cover" id="pf-cover"><img id="pf-cover-img" alt="Ảnh bìa sách" hidden><span id="pf-cover-empty">Chưa có ảnh bìa</span></div>
+                  <label class="pf-file">Chọn ảnh từ máy<input id="pf-file" type="file" accept="image/*"></label>
+                  <small class="pf-hint">Ảnh dọc tỉ lệ 3:4, định dạng PNG hoặc JPG.</small>
+                </section>
+                <section class="pf-card">
+                  <h3>Bán hàng</h3>
+                  <div class="pf-fields pf-one">
+                    <label>Trạng thái<select id="pf-status"><option>Đang bán</option><option>Chưa đăng bán</option></select></label>
+                    <label>Giá bán (₫)<input id="pf-price" type="number" min="0" step="1" placeholder="0"></label>
+                    <label>Số lượng trong kho<input id="pf-qty" type="number" min="0" step="1" placeholder="0"></label>
+                  </div>
+                </section>
+              </aside>
+              <div class="pf-actions">
+                <a class="btn-outline" href="#products">Hủy</a>
+                <button class="btn" type="submit">LƯU SẢN PHẨM</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="admin-box" id="orders">
+          <h2>Quản lý đơn hàng</h2>
+          <div class="order-tabs"><a href="#orders" class="active">Tất cả <b>86</b></a><a href="#orders">Chờ xác nhận <b>9</b></a><a href="#orders">Đã xác nhận <b>14</b></a><a href="#orders">Đang giao <b>11</b></a><a href="#orders">Đã giao <b>47</b></a><a href="#orders">Đã hủy <b>5</b></a></div>
+          <form class="admin-toolbar" action="index.html#orders" method="get">
+  <input type="search" name="q" placeholder="Tìm mã đơn, tên khách...">
+  <label>Từ ngày <input type="date" name="from"></label>
+  <label>Đến ngày <input type="date" name="to"></label>
+  <select name="area">
+    <option>Tất cả khu vực</option>
+    <option>Quận 1</option>
+    <option>Quận 3</option>
+    <option>Quận 7</option>
+    <option>Quận 10</option>
+    <option>Quận Bình Thạnh</option>
+    <option>Quận Gò Vấp</option>
+    <option>TP. Thủ Đức</option>
+  </select>
+  <button class="admin-search-btn" type="submit">Lọc</button>
+</form>
+          <div class="table-scroll"><table class="admin-table orders-table">
+            <tr>
+              <th>Mã đơn</th>
+              <th>Khách hàng</th>
+              <th>Địa chỉ giao hàng</th>
+              <th>Ngày đặt</th>
+              <th>Chi tiết</th>
+              <th class="num">Tổng</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+            <tr>
+              <td>#DH1030</td>
+              <td>Võ Minh Khang</td><td>Quận 7, TP.HCM</td>
+              <td>06/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1030&amp;from=orders">Chi tiết</a></td>
+              <td class="num">161.000 ₫</td>
+              <td><span class="status status-wait">Chờ xác nhận</span></td>
+              <td><a class="admin-btn" href="#confirm-DH1030">Xác nhận</a> <a class="admin-btn admin-btn-danger" href="#cancel-DH1030">Hủy đơn</a></td>
+            </tr>
+            <tr>
+              <td>#DH1029</td>
+              <td>Lê Ngọc Mai</td><td>Quận Bình Thạnh, TP.HCM</td>
+              <td>05/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1029&amp;from=orders">Chi tiết</a></td>
+              <td class="num">272.000 ₫</td>
+              <td><span class="status status-wait">Chờ xác nhận</span></td>
+              <td><a class="admin-btn" href="#confirm-DH1029">Xác nhận</a> <a class="admin-btn admin-btn-danger" href="#cancel-DH1029">Hủy đơn</a></td>
+            </tr>
+            <tr>
+              <td>#DH1028</td>
+              <td>Phạm Gia Hân</td><td>TP. Thủ Đức, TP.HCM</td>
+              <td>05/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1028&amp;from=orders">Chi tiết</a></td>
+              <td class="num">118.000 ₫</td>
+              <td><span class="status status-confirm">Đã xác nhận</span></td>
+              <td><a class="admin-btn" href="#ship-DH1028">Giao hàng</a> <a class="admin-btn admin-btn-danger" href="#cancel-DH1028">Hủy đơn</a></td>
+            </tr>
+            <tr>
+              <td>#DH1027</td>
+              <td>Đặng Thu Hà</td><td>Quận 10, TP.HCM</td>
+              <td>04/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1027&amp;from=orders">Chi tiết</a></td>
+              <td class="num">204.000 ₫</td>
+              <td><span class="status status-ship">Đang giao</span></td>
+              <td><a class="admin-btn" href="#done-DH1027">Đã giao</a></td>
+            </tr>
+            <tr>
+              <td>#DH1026</td>
+              <td>Hoàng Lan Chi</td><td>Quận Gò Vấp, TP.HCM</td>
+              <td>03/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1026&amp;from=orders">Chi tiết</a></td>
+              <td class="num">85.000 ₫</td>
+              <td><span class="status status-cancel">Đã hủy</span></td>
+              <td><a class="admin-btn" href="order-detail.html?id=DH1026&amp;from=orders">Xem</a></td>
+            </tr>
+            <tr>
+              <td>#DH1025</td>
+              <td>Trần Hoàng Nam</td><td>Quận 3, TP.HCM</td>
+              <td>03/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1025&amp;from=orders">Chi tiết</a></td>
+              <td class="num">430.000 ₫</td>
+              <td><span class="status status-ship">Đang giao</span></td>
+              <td><a class="admin-btn" href="#done-DH1025">Đã giao</a></td>
+            </tr>
+            <tr>
+              <td>#DH1024</td>
+              <td>Nguyễn Minh Anh</td><td>Quận 1, TP.HCM</td>
+              <td>02/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1024&amp;from=orders">Chi tiết</a></td>
+              <td class="num">193.000 ₫</td>
+              <td><span class="status status-confirm">Đã xác nhận</span></td>
+              <td><a class="admin-btn" href="#ship-DH1024">Giao hàng</a> <a class="admin-btn admin-btn-danger" href="#cancel-DH1024">Hủy đơn</a></td>
+            </tr>
+            <tr>
+              <td>#DH1023</td>
+              <td>Trần Hoàng Nam</td><td>Quận 3, TP.HCM</td>
+              <td>01/10/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1023&amp;from=orders">Chi tiết</a></td>
+              <td class="num">186.000 ₫</td>
+              <td><span class="status status-done">Đã giao</span></td>
+              <td><a class="admin-btn" href="order-detail.html?id=DH1023&amp;from=orders">Xem</a></td>
+            </tr>
+            <tr>
+              <td>#DH1002</td>
+              <td>Nguyễn Minh Anh</td><td>Quận 1, TP.HCM</td>
+              <td>03/09/2026</td><td><a class="admin-btn" href="order-detail.html?id=DH1002&amp;from=orders">Chi tiết</a></td>
+              <td class="num">150.000 ₫</td>
+              <td><span class="status status-cancel">Đã hủy</span></td>
+              <td><a class="admin-btn" href="order-detail.html?id=DH1002&amp;from=orders">Xem</a></td>
+            </tr>
+          </table></div>
+          <div class="admin-pager">
+            <div class="pagination"><a href="#" aria-label="Trang trước">‹</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><span class="dots">…</span><a href="#">11</a><a href="#" aria-label="Trang sau">›</a></div>
+          </div>
+        </div>
+        <div class="admin-box" id="stats">
+          <h2>Thống kê</h2>
+          <div class="stat-grid">
+            <div class="stat-panel">
+              <h3>Doanh thu 6 tháng gần đây</h3>
+              <div class="bar-chart"><div class="bar-col"><span class="bar-val">12,4M</span><div class="bar" style="height:67%"></div><span class="bar-lbl">T5</span></div><div class="bar-col"><span class="bar-val">14,1M</span><div class="bar" style="height:76%"></div><span class="bar-lbl">T6</span></div><div class="bar-col"><span class="bar-val">15,8M</span><div class="bar" style="height:85%"></div><span class="bar-lbl">T7</span></div><div class="bar-col"><span class="bar-val">13,9M</span><div class="bar" style="height:75%"></div><span class="bar-lbl">T8</span></div><div class="bar-col"><span class="bar-val">16,7M</span><div class="bar" style="height:90%"></div><span class="bar-lbl">T9</span></div><div class="bar-col now"><span class="bar-val">18,6M</span><div class="bar" style="height:100%"></div><span class="bar-lbl">T10</span></div></div>
+            </div>
+            <div class="stat-panel">
+              <h3>Đơn hàng theo trạng thái (tháng này)</h3>
+              <div class="hbar-list"><div class="hbar-row"><span>Chờ xác nhận</span><div class="hbar-track"><div class="hbar hbar-wait" style="width:19%"></div></div><b>9</b></div><div class="hbar-row"><span>Đã xác nhận</span><div class="hbar-track"><div class="hbar hbar-confirm" style="width:30%"></div></div><b>14</b></div><div class="hbar-row"><span>Đang giao</span><div class="hbar-track"><div class="hbar hbar-ship" style="width:23%"></div></div><b>11</b></div><div class="hbar-row"><span>Đã giao</span><div class="hbar-track"><div class="hbar hbar-done" style="width:100%"></div></div><b>47</b></div><div class="hbar-row"><span>Đã hủy</span><div class="hbar-track"><div class="hbar hbar-cancel" style="width:11%"></div></div><b>5</b></div></div>
+            </div>
+            <div class="stat-panel stat-wide">
+              <h3>Top 5 khách hàng mua nhiều nhất</h3>
+              <form class="admin-toolbar" action="index.html#stats" method="get">
+                <label>Từ ngày <input type="date" name="from" value="2026-09-01"></label>
+                <label>Đến ngày <input type="date" name="to" value="2026-09-30"></label>
+                <button class="admin-search-btn" type="submit">Thống kê</button>
+              </form>
+              <p class="stats-note">Từ 01/09/2026 đến 30/09/2026, sắp xếp giảm dần theo tổng mua (không tính đơn đã hủy).</p>
+              <div class="table-scroll"><table class="admin-table top-customers">
+                <thead>
+                  <tr><th>Khách hàng</th><th>Chi tiết</th><th class="num">Số đơn</th><th>Từ ngày</th><th>Đến ngày</th><th class="money">Tổng tiền</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="cust-row"><td>Nguyễn Minh Anh</td><td><button type="button" class="admin-btn" data-top-toggle="top-orders-0" aria-expanded="false" aria-controls="top-orders-0">Xem</button></td><td class="num">3 đơn</td><td>01/09/2026</td><td>30/09/2026</td><td class="money">1.322.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-0" hidden><td>#DH1018</td><td><a class="admin-btn" href="order-detail.html?id=DH1018&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 25/09/2026</td><td class="money">324.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-0" hidden><td>#DH1012</td><td><a class="admin-btn" href="order-detail.html?id=DH1012&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 20/09/2026</td><td class="money">412.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-0" hidden><td>#DH1005</td><td><a class="admin-btn" href="order-detail.html?id=DH1005&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 10/09/2026</td><td class="money">586.000 ₫</td></tr>
+                  <tr class="cust-row"><td>Trần Hoàng Nam</td><td><button type="button" class="admin-btn" data-top-toggle="top-orders-1" aria-expanded="false" aria-controls="top-orders-1">Xem</button></td><td class="num">3 đơn</td><td>01/09/2026</td><td>30/09/2026</td><td class="money">1.037.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-1" hidden><td>#DH1020</td><td><a class="admin-btn" href="order-detail.html?id=DH1020&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 30/09/2026</td><td class="money">497.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-1" hidden><td>#DH1014</td><td><a class="admin-btn" href="order-detail.html?id=DH1014&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 22/09/2026</td><td class="money">355.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-1" hidden><td>#DH1007</td><td><a class="admin-btn" href="order-detail.html?id=DH1007&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 12/09/2026</td><td class="money">185.000 ₫</td></tr>
+                  <tr class="cust-row"><td>Lê Ngọc Mai</td><td><button type="button" class="admin-btn" data-top-toggle="top-orders-2" aria-expanded="false" aria-controls="top-orders-2">Xem</button></td><td class="num">2 đơn</td><td>01/09/2026</td><td>30/09/2026</td><td class="money">780.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-2" hidden><td>#DH1016</td><td><a class="admin-btn" href="order-detail.html?id=DH1016&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 25/09/2026</td><td class="money">468.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-2" hidden><td>#DH1010</td><td><a class="admin-btn" href="order-detail.html?id=DH1010&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 17/09/2026</td><td class="money">312.000 ₫</td></tr>
+                  <tr class="cust-row"><td>Phạm Gia Hân</td><td><button type="button" class="admin-btn" data-top-toggle="top-orders-3" aria-expanded="false" aria-controls="top-orders-3">Xem</button></td><td class="num">2 đơn</td><td>01/09/2026</td><td>30/09/2026</td><td class="money">635.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-3" hidden><td>#DH1019</td><td><a class="admin-btn" href="order-detail.html?id=DH1019&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 29/09/2026</td><td class="money">390.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-3" hidden><td>#DH1008</td><td><a class="admin-btn" href="order-detail.html?id=DH1008&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 14/09/2026</td><td class="money">245.000 ₫</td></tr>
+                  <tr class="cust-row"><td>Võ Minh Khang</td><td><button type="button" class="admin-btn" data-top-toggle="top-orders-4" aria-expanded="false" aria-controls="top-orders-4">Xem</button></td><td class="num">2 đơn</td><td>01/09/2026</td><td>30/09/2026</td><td class="money">513.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-4" hidden><td>#DH1013</td><td><a class="admin-btn" href="order-detail.html?id=DH1013&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 21/09/2026</td><td class="money">298.000 ₫</td></tr>
+                  <tr class="cust-order" data-group="top-orders-4" hidden><td>#DH1003</td><td><a class="admin-btn" href="order-detail.html?id=DH1003&amp;from=stats">Xem</a></td><td></td><td colspan="2">Đặt ngày 06/09/2026</td><td class="money">215.000 ₫</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+            <div class="stat-panel stat-wide">
+              <h3>Top 5 sách bán chạy (từ trước đến nay)</h3>
+              <div class="table-scroll"><table class="admin-table">
+                <tr><th>#</th><th>Tên sách</th><th>Đã bán</th><th class="money">Doanh thu</th></tr>
+              <tr><td>1</td><td>Nhà Giả Kim</td><td>64</td><td class="money">4.352.000 ₫</td></tr>
+              <tr><td>2</td><td>Tội Ác Và Hình Phạt</td><td>58</td><td class="money">5.104.000 ₫</td></tr>
+              <tr><td>3</td><td>Sherlock Holmes</td><td>47</td><td class="money">4.465.000 ₫</td></tr>
+              <tr><td>4</td><td>Lược sử về loài người</td><td>41</td><td class="money">5.535.000 ₫</td></tr>
+              <tr><td>5</td><td>Doraemon</td><td>36</td><td class="money">1.980.000 ₫</td></tr>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  <script src="../../assets/js/flash.js?v=10"></script>
+  <script src="../../assets/js/pagination.js?v=12"></script>
+  <script src="../../assets/js/admin/dashboard.js?v=12"></script>
+  </body>
+</html>
