@@ -1,0 +1,849 @@
+/* =====================================================================
+   BOOKLY — CSS khu vực quản trị (đăng nhập, thống kê, sản phẩm, khách hàng, đơn hàng).
+   ===================================================================== */
+
+/* ---------- TRANG QUẢN TRỊ (ADMIN) ---------- */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 650px;
+  background: var(--bg);
+}
+.admin-layout .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 25px 15px;
+  overflow-y: auto;
+  border-right: 3px solid var(--green);
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar h2 {
+  text-align: center;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar p {
+  color: #ddd3c7;
+}
+.admin-layout .sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+  padding: 13px;
+  border-radius: 5px;
+  color: #ede4d8;
+  font-size: 14px;
+  transition: background .2s ease, color .2s ease;
+}
+.admin-layout .sidebar a span {
+  white-space: nowrap;
+}
+.admin-layout .sidebar a:hover,
+.admin-layout .sidebar a:focus-visible {
+  background: #6e262c;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar a.admin-logout {
+  color: var(--terra);
+}
+.admin-layout .sidebar a.admin-logout:hover {
+  background: var(--terra);
+  color: #fbf7f2;
+}
+.admin-layout .sidebar .ico,
+.stat .ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.admin-layout .sidebar .ico {
+  color: #fbf7f2;
+  stroke: currentColor;
+}
+.stat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-layout .admin-main {
+  min-width: 0;
+  padding: 30px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1,
+.admin-layout .admin-main > p {
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1 {
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+.stat {
+  padding: 20px;
+  border-left: 4px solid #924149;
+  border-radius: 8px;
+}
+.stat h2 {
+  margin: 8px 0;
+}
+.admin-box {
+  margin: 20px 0;
+  padding: 22px;
+  border-radius: 8px;
+}
+.admin-layout .stat,
+.admin-layout .admin-box {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(47, 23, 29, .06);
+}
+.admin-layout .stat {
+  border-top: 3px solid var(--green);
+  border-left: 0;
+}
+.admin-layout .stat:nth-child(even) {
+  border-top-color: var(--terra);
+}
+.admin-layout .stat h2 {
+  color: var(--green);
+}
+.admin-layout .stat:nth-child(even) h2 {
+  color: var(--terra);
+}
+.admin-layout .admin-box h2 {
+  color: var(--ink);
+}
+.admin-box h2.has-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.admin-layout .admin-table th {
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .admin-table td {
+  color: var(--ink);
+}
+.admin-layout .admin-table tr:nth-child(even) td {
+  background: var(--bg);
+}
+.admin-box .admin-table td {
+  white-space: nowrap;
+}
+.admin-box .admin-table td:nth-child(4) {
+  white-space: normal;
+}
+.admin-box .admin-table td small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.admin-box .admin-table td .admin-btn {
+  margin: 2px 2px 2px 0;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.admin-table .thumb {
+  display: block;
+  width: 36px;
+  height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  object-fit: cover;
+}
+.admin-btn {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.admin-layout .admin-btn {
+  display: inline-block;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--green);
+  cursor: pointer;
+}
+.admin-layout .admin-btn:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fbf7f2;
+}
+.admin-layout .admin-btn-danger {
+  color: #8a2230;
+}
+.admin-layout .admin-btn-danger:hover {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fbf7f2;
+}
+.admin-layout .status {
+  background: #f4ede4;
+  color: var(--green);
+}
+.admin-layout .status.status-wait {
+  background: #f6ecd6;
+  color: #8a5a12;
+}
+.admin-layout .status.status-confirm {
+  background: #e3edf3;
+  color: #2f5d7a;
+}
+.admin-layout .status.status-ship {
+  background: #ece6f5;
+  color: #5b3f8a;
+}
+.admin-layout .status.status-done {
+  background: #e1f0e5;
+  color: #2f6b3f;
+}
+.admin-layout .status.status-cancel {
+  background: #f6e1e3;
+  color: #8a2230;
+}
+/* Quản lý sản phẩm: danh sách và form thêm/sửa */
+.admin-split {
+  display: block;
+  margin: 20px 0;
+}
+.admin-split > .admin-box {
+  margin: 0;
+  min-width: 0;
+}
+.admin-split .admin-table th,
+.admin-split .admin-table td {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.admin-split .admin-table td:nth-child(3) {
+  min-width: 150px;
+}
+.admin-split .admin-table .thumb {
+  width: 40px;
+  height: 56px;
+}
+.admin-split .admin-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.admin-split h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+.admin-split .btn-sm,
+.admin-box .btn-sm {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+}
+#product-form {
+  display: none;
+}
+#product-form:target {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 36px max(24px, calc((100% - 760px) / 2));
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  background: var(--bg);
+  box-shadow: none;
+}
+.admin-split #product-form h2 {
+  display: block;
+  margin: 10px 0 22px;
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+  font-size: 30px;
+}
+.back-link {
+  display: inline-block;
+  color: var(--terra);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+#product-form .pf {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.pf-main,
+.pf-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.pf-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.pf-card h3 {
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.pf-card h3 + .pf-hint {
+  margin: -6px 0 14px;
+}
+.pf-hint,
+.pf-fields small {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.pf-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 18px;
+}
+.pf-fields.pf-one {
+  grid-template-columns: 1fr;
+}
+.pf-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pf-fields .full {
+  grid-column: 1 / -1;
+}
+.pf-fields input,
+.pf-fields select,
+.pf-fields textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.pf-fields textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+.pf-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 13px;
+}
+.pf-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pf-file {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pf-file input {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  font-size: 13px;
+}
+.pf-actions {
+  grid-column: 1 / -1;
+  position: sticky;
+  bottom: -36px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0 -2px;
+  padding: 14px 2px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.pf-actions .btn,
+.pf-actions .btn-outline {
+  padding: 12px 26px;
+  font-size: 14px;
+}
+@media (max-width: 860px) {
+  #product-form .pf {
+    grid-template-columns: 1fr;
+  }
+  .pf-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.stats-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.admin-layout .admin-table tr.cust-row td {
+  background: rgba(122, 42, 49, .08);
+  font-weight: 600;
+}
+.admin-layout .admin-table.top-customers tr.cust-order td {
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13px;
+}
+.admin-table.top-customers tr.cust-order td:first-child {
+  padding-left: 28px;
+}
+/* Quản lý khách hàng */
+.customer-form:not(:target) {
+  display: none;
+}
+.customer-form {
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+.customer-form h3 {
+  margin: 10px 0 12px;
+  font-size: 18px;
+  color: var(--ink);
+}
+.customer-form .form {
+  gap: 10px 14px;
+}
+.customer-form .form label {
+  font-size: 13px;
+}
+.customer-form .form input,
+.customer-form .form select {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.customer-form .btn {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+/* Đơn hàng: bộ lọc, trạng thái và các tab */
+.admin-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.admin-pager .pagination {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+}
+.admin-pager .pagination a {
+  min-width: 34px;
+  height: 34px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.admin-pager .pagination .dots {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  color: var(--muted);
+}
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.admin-toolbar input,
+.admin-toolbar select {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.admin-toolbar input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+}
+.order-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.order-tabs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+.order-tabs a b {
+  color: var(--terra);
+  font-weight: 600;
+}
+.order-tabs a:hover {
+  border-color: var(--terra);
+}
+.order-tabs a.active {
+  border-color: var(--terra);
+  background: var(--terra);
+  color: #fbf7f2;
+}
+.order-tabs a.active b {
+  color: #fbf7f2;
+}
+#orders .admin-table td {
+  vertical-align: top;
+}
+#orders .admin-table td:nth-child(2) {
+  white-space: normal;
+  min-width: 170px;
+}
+/* Khu vực thống kê */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.stat-panel {
+  min-width: 0;
+  padding: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.stat-panel h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 190px;
+  padding-top: 22px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+.bar-col .bar {
+  width: 100%;
+  max-width: 46px;
+  border-radius: 4px 4px 0 0;
+  background: #c9a3a6;
+}
+.bar-col.now .bar {
+  background: var(--terra);
+}
+.bar-val {
+  font-size: 12px;
+  color: var(--muted);
+}
+.bar-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.hbar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 32px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.hbar-row b {
+  text-align: right;
+}
+.hbar-track {
+  height: 14px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--bg);
+}
+.hbar {
+  height: 100%;
+  border-radius: 4px;
+}
+.hbar-wait {
+  background: #d9b25f;
+}
+.hbar-confirm {
+  background: #6f9bb8;
+}
+.hbar-ship {
+  background: #8f78b8;
+}
+.hbar-done {
+  background: #5f9a70;
+}
+.hbar-cancel {
+  background: #c26a75;
+}
+@media (max-width: 1100px) {
+  .stat-grid {
+  grid-template-columns: 1fr;
+}
+}
+/* Nút tìm kiếm / thống kê trong khu vực quản trị: chỉ minh họa giao diện, không thực hiện gì. */
+.admin-search-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  background: #4b1f21;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-search-btn:hover {
+  opacity: .9;
+}
+.admin-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.admin-toolbar input[type="date"] {
+  flex: none;
+  min-width: 0;
+}
+.stat-wide {
+  grid-column: 1 / -1;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 5px;
+}
+#orders .admin-table td:nth-child(3) {
+  min-width: 150px;
+  white-space: normal;
+}
+#orders .admin-table td:nth-child(4) {
+  min-width: 0;
+  white-space: nowrap;
+}
+#orders .admin-table td:nth-child(5) {
+  min-width: 200px;
+  white-space: normal;
+}
+#orders .admin-table td:nth-child(7) {
+  min-width: 0;
+  white-space: nowrap;
+}
+#orders .admin-table td:nth-child(8) {
+  min-width: 130px;
+  white-space: normal;
+}
+.admin-box .admin-table th,
+.admin-box .admin-table td {
+  padding: 10px 8px;
+}
+.confirm-box {
+  display: none;
+}
+.confirm-box:target,
+.confirm-box.open {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(36, 16, 22, .45);
+}
+.confirm-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px;
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px rgba(36, 16, 22, .3);
+}
+.confirm-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.confirm-body p {
+  margin: 0;
+}
+.confirm-thumb {
+  flex: none;
+  width: 64px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(36, 16, 22, .25);
+}
+.confirm-card h3 {
+  margin: 0 0 10px;
+}
+.confirm-card p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.confirm-actions .admin-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.confirm-actions .admin-btn-danger {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fff;
+}
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.admin-login-wrap .login {
+  width: 100%;
+  margin: 0;
+}
+.admin-login-logo {
+  display: block;
+  width: 72px;
+  margin: 0 auto 8px;
+}
+.login-error {
+  margin: 4px 0 0;
+  color: var(--danger);
+  font-size: 14px;
+  text-align: center;
+}
+.admin-table .num {
+  padding-right: 18px;
+}
+/* Quản lý đơn hàng: cột Chi tiết gọn lại */
+#orders .admin-table.orders-table td:nth-child(5) {
+  min-width: 0;
+  white-space: nowrap;
+}
+/* Chi tiết đơn hàng: khu xử lý đơn */
+.odx-hint {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.odx-hint:last-child {
+  margin-bottom: 0;
+}
+.odx-process {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.odx-process .btn,
+.odx-process .admin-btn {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
+/* Cột tiền (Top 5 khách hàng, Top 5 sách): căn phải cả tiêu đề lẫn giá trị */
+.admin-table th.money,
+.admin-table td.money {
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 18px;
+}
+/* Dòng báo trang không có dữ liệu mẫu (phân trang sản phẩm) */
+.admin-table td.empty-page {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px 12px;
+  white-space: normal;
+}
