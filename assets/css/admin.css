@@ -1,0 +1,1435 @@
+/* =====================================================================
+   BOOKLY — CSS khu vực quản trị (đăng nhập, thống kê, sản phẩm, khách hàng, đơn hàng).
+   ===================================================================== */
+
+/* ---------- TRANG QUẢN TRỊ (ADMIN) ---------- */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 650px;
+  background: var(--bg);
+}
+.admin-layout .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 25px 15px;
+  overflow-y: auto;
+  border-right: 3px solid var(--green);
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar h2 {
+  text-align: center;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar p {
+  color: #ddd3c7;
+}
+.admin-layout .sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+  padding: 13px;
+  border-radius: 5px;
+  color: #ede4d8;
+  font-size: 14px;
+  transition: background .2s ease, color .2s ease;
+}
+.admin-layout .sidebar a span {
+  white-space: nowrap;
+}
+.admin-layout .sidebar a:hover,
+.admin-layout .sidebar a:focus-visible {
+  background: #6e262c;
+  color: #fbf7f2;
+}
+.admin-layout .sidebar a.admin-logout {
+  color: var(--terra);
+}
+.admin-layout .sidebar a.admin-logout:hover {
+  background: var(--terra);
+  color: #fbf7f2;
+}
+.admin-layout .sidebar .ico,
+.stat .ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.admin-layout .sidebar .ico {
+  color: #fbf7f2;
+  stroke: currentColor;
+}
+.stat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-layout .admin-main {
+  min-width: 0;
+  padding: 30px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1,
+.admin-layout .admin-main > p {
+  color: var(--ink);
+}
+.admin-layout .admin-main > h1 {
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+.stat {
+  padding: 20px;
+  border-left: 4px solid #924149;
+  border-radius: 8px;
+}
+.stat h2 {
+  margin: 8px 0;
+}
+.admin-box {
+  margin: 20px 0;
+  padding: 22px;
+  border-radius: 8px;
+}
+.admin-layout .stat,
+.admin-layout .admin-box {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(47, 23, 29, .06);
+}
+.admin-layout .stat {
+  border-top: 3px solid var(--green);
+  border-left: 0;
+}
+.admin-layout .stat:nth-child(even) {
+  border-top-color: var(--terra);
+}
+.admin-layout .stat h2 {
+  color: var(--green);
+}
+.admin-layout .stat:nth-child(even) h2 {
+  color: var(--terra);
+}
+.admin-layout .admin-box h2 {
+  color: var(--ink);
+}
+.admin-box h2.has-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.admin-layout .admin-table th {
+  background: #271218;
+  color: #fbf7f2;
+}
+.admin-layout .admin-table td {
+  color: var(--ink);
+}
+.admin-layout .admin-table tr:nth-child(even) td {
+  background: var(--bg);
+}
+.admin-box .admin-table td {
+  white-space: nowrap;
+}
+.admin-box .admin-table td:nth-child(4) {
+  white-space: normal;
+}
+.admin-box .admin-table td small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.admin-box .admin-table td .admin-btn {
+  margin: 2px 2px 2px 0;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.admin-table .thumb {
+  display: block;
+  width: 36px;
+  height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  object-fit: cover;
+}
+.admin-btn {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.admin-layout .admin-btn {
+  display: inline-block;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--green);
+  cursor: pointer;
+}
+.admin-layout .admin-btn:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fbf7f2;
+}
+.admin-layout .admin-btn-danger {
+  color: #8a2230;
+}
+.admin-layout .admin-btn-danger:hover {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fbf7f2;
+}
+.admin-layout .status {
+  background: #f4ede4;
+  color: var(--green);
+}
+.admin-layout .status.status-wait {
+  background: #f6ecd6;
+  color: #8a5a12;
+}
+.admin-layout .status.status-confirm {
+  background: #e3edf3;
+  color: #2f5d7a;
+}
+.admin-layout .status.status-ship {
+  background: #ece6f5;
+  color: #5b3f8a;
+}
+.admin-layout .status.status-done {
+  background: #e1f0e5;
+  color: #2f6b3f;
+}
+.admin-layout .status.status-cancel {
+  background: #f6e1e3;
+  color: #8a2230;
+}
+/* Quản lý sản phẩm: danh sách và form thêm/sửa */
+.admin-split {
+  display: block;
+  margin: 20px 0;
+}
+.admin-split > .admin-box {
+  margin: 0;
+  min-width: 0;
+}
+.admin-split .admin-table th,
+.admin-split .admin-table td {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.admin-split .admin-table td:nth-child(3) {
+  min-width: 150px;
+}
+.admin-split .admin-table .thumb {
+  width: 40px;
+  height: 56px;
+}
+.admin-split .admin-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.admin-split h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+.admin-split .btn-sm,
+.admin-box .btn-sm {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+}
+#product-form {
+  display: none;
+}
+#product-form:target {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 36px max(24px, calc((100% - 760px) / 2));
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  background: var(--bg);
+  box-shadow: none;
+}
+.admin-split #product-form h2 {
+  display: block;
+  margin: 10px 0 22px;
+  padding-left: 14px;
+  border-left: 4px solid var(--terra);
+  font-size: 30px;
+}
+.back-link {
+  display: inline-block;
+  color: var(--terra);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+#product-form .pf {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.pf-main,
+.pf-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+.pf-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+.pf-card h3 {
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.pf-card h3 + .pf-hint {
+  margin: -6px 0 14px;
+}
+.pf-hint,
+.pf-fields small {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.pf-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 18px;
+}
+.pf-fields.pf-one {
+  grid-template-columns: 1fr;
+}
+.pf-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pf-fields .full {
+  grid-column: 1 / -1;
+}
+.pf-fields input,
+.pf-fields select,
+.pf-fields textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.pf-fields textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+.pf-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 13px;
+}
+.pf-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pf-file {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pf-file input {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  font-size: 13px;
+}
+.pf-actions {
+  grid-column: 1 / -1;
+  position: sticky;
+  bottom: -36px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0 -2px;
+  padding: 14px 2px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.pf-actions .btn,
+.pf-actions .btn-outline {
+  padding: 12px 26px;
+  font-size: 14px;
+}
+@media (max-width: 860px) {
+  #product-form .pf {
+    grid-template-columns: 1fr;
+  }
+  .pf-fields {
+    grid-template-columns: 1fr;
+  }
+}
+.stats-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.admin-layout .admin-table tr.cust-row td {
+  background: rgba(122, 42, 49, .08);
+  font-weight: 600;
+}
+.admin-layout .admin-table.top-customers tr.cust-order td {
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13px;
+}
+.admin-table.top-customers tr.cust-order td:first-child {
+  padding-left: 28px;
+}
+/* Quản lý khách hàng */
+.customer-form:not(:target) {
+  display: none;
+}
+.customer-form {
+  margin: 0 0 18px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+.customer-form h3 {
+  margin: 10px 0 12px;
+  font-size: 18px;
+  color: var(--ink);
+}
+.customer-form .form {
+  gap: 10px 14px;
+}
+.customer-form .form label {
+  font-size: 13px;
+}
+.customer-form .form input,
+.customer-form .form select {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.customer-form .btn {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+/* Đơn hàng: bộ lọc, trạng thái và các tab */
+.admin-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.admin-pager .pagination {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+}
+.admin-pager .pagination a {
+  min-width: 34px;
+  height: 34px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.admin-pager .pagination .dots {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  color: var(--muted);
+}
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.admin-toolbar input,
+.admin-toolbar select {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.admin-toolbar input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+}
+.order-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.order-tabs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+.order-tabs a b {
+  color: var(--terra);
+  font-weight: 600;
+}
+.order-tabs a:hover {
+  border-color: var(--terra);
+}
+.order-tabs a.active {
+  border-color: var(--terra);
+  background: var(--terra);
+  color: #fbf7f2;
+}
+.order-tabs a.active b {
+  color: #fbf7f2;
+}
+#orders .admin-table td {
+  vertical-align: top;
+}
+#orders .admin-table td:nth-child(2) {
+  white-space: normal;
+  min-width: 170px;
+}
+/* Khu vực thống kê */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.stat-panel {
+  min-width: 0;
+  padding: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.stat-panel h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 190px;
+  padding-top: 22px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+.bar-col .bar {
+  width: 100%;
+  max-width: 46px;
+  border-radius: 4px 4px 0 0;
+  background: #c9a3a6;
+}
+.bar-col.now .bar {
+  background: var(--terra);
+}
+.bar-val {
+  font-size: 12px;
+  color: var(--muted);
+}
+.bar-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.hbar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 32px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.hbar-row b {
+  text-align: right;
+}
+.hbar-track {
+  height: 14px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--bg);
+}
+.hbar {
+  height: 100%;
+  border-radius: 4px;
+}
+.hbar-wait {
+  background: #d9b25f;
+}
+.hbar-confirm {
+  background: #6f9bb8;
+}
+.hbar-ship {
+  background: #8f78b8;
+}
+.hbar-done {
+  background: #5f9a70;
+}
+.hbar-cancel {
+  background: #c26a75;
+}
+@media (max-width: 1100px) {
+  .stat-grid {
+  grid-template-columns: 1fr;
+}
+}
+/* Nút tìm kiếm / thống kê trong khu vực quản trị: chỉ minh họa giao diện, không thực hiện gì. */
+.admin-search-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  background: var(--wine, #4b1f21);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-search-btn:hover {
+  opacity: .9;
+}
+.admin-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink);
+}
+.admin-toolbar input[type="date"] {
+  flex: none;
+  min-width: 0;
+}
+.stat-wide {
+  grid-column: 1 / -1;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 5px;
+}
+#orders .admin-table td:nth-child(3) {
+  min-width: 150px;
+  white-space: normal;
+}
+#orders .admin-table td:nth-child(4) {
+  min-width: 0;
+  white-space: nowrap;
+}
+#orders .admin-table td:nth-child(5) {
+  min-width: 200px;
+  white-space: normal;
+}
+#orders .admin-table td:nth-child(7) {
+  min-width: 0;
+  white-space: nowrap;
+}
+#orders .admin-table td:nth-child(8) {
+  min-width: 130px;
+  white-space: normal;
+}
+.admin-box .admin-table th,
+.admin-box .admin-table td {
+  padding: 10px 8px;
+}
+.confirm-box {
+  display: none;
+}
+.confirm-box:target,
+.confirm-box.open {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(36, 16, 22, .45);
+}
+.confirm-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px;
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px rgba(36, 16, 22, .3);
+}
+.confirm-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.confirm-body p {
+  margin: 0;
+}
+.confirm-thumb {
+  flex: none;
+  width: 64px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(36, 16, 22, .25);
+}
+.confirm-card h3 {
+  margin: 0 0 10px;
+}
+.confirm-card p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.confirm-actions .admin-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.confirm-actions .admin-btn-danger {
+  border-color: #8a2230;
+  background: #8a2230;
+  color: #fff;
+}
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.admin-login-wrap .login {
+  width: 100%;
+  margin: 0;
+}
+.admin-login-logo {
+  display: block;
+  width: 72px;
+  margin: 0 auto 8px;
+}
+.login-error {
+  margin: 4px 0 0;
+  color: var(--danger);
+  font-size: 14px;
+  text-align: center;
+}
+.admin-table .num {
+  padding-right: 18px;
+}
+/* Quản lý đơn hàng: cột Chi tiết gọn lại */
+#orders .admin-table.orders-table td:nth-child(5) {
+  min-width: 0;
+  white-space: nowrap;
+}
+/* Trang chi tiết đơn hàng trong khu vực quản trị */
+.od-card {
+  max-width: 920px;
+  margin-top: 18px;
+  padding: 25px;
+  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.od-card p {
+  margin: 0 0 14px;
+}
+.od-card hr {
+  margin: 18px 0 4px;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+.od-card .cart-row {
+  grid-template-columns: 85px 1fr 90px 130px;
+}
+.od-card .cart-row b {
+  text-align: right;
+}
+.od-card .cart-total {
+  padding-bottom: 18px;
+}
+@media (max-width: 600px) {
+  .od-card {
+  padding: 16px;
+}
+  .od-card .cart-row {
+  grid-template-columns: 70px 1fr auto;
+  gap: 10px;
+}
+}
+/* Chi tiết đơn hàng: khu xử lý đơn */
+.odx-hint {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.odx-hint:last-child {
+  margin-bottom: 0;
+}
+.odx-process {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.odx-process .btn,
+.odx-process .admin-btn {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
+/* Top 5 sách bán chạy: chia cột đều, cột Doanh thu canh phải cho thẳng hàng */
+.admin-table.top-books {
+  table-layout: fixed;
+}
+.admin-table.top-books th:nth-child(1),
+.admin-table.top-books td:nth-child(1) {
+  width: 8%;
+}
+.admin-table.top-books th:nth-child(2),
+.admin-table.top-books td:nth-child(2) {
+  width: 42%;
+}
+.admin-table.top-books th:nth-child(3),
+.admin-table.top-books td:nth-child(3) {
+  width: 20%;
+}
+.admin-table.top-books th.num,
+.admin-table.top-books td.num {
+  width: 30%;
+  padding-right: 32px;
+  text-align: right;
+}
+
+/* ---------- Căn chỉnh chung cho các bảng quản trị ---------- */
+.admin-layout .admin-table th,
+.admin-layout .admin-table td {
+  padding: 14px 12px;
+  vertical-align: middle;
+}
+.admin-layout .admin-table th.num,
+.admin-layout .admin-table td.num {
+  text-align: right;
+  padding-right: 28px;
+}
+.admin-layout .admin-table .admin-btn {
+  margin: 2px 4px 2px 0;
+}
+.admin-layout .admin-table .status {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Quản lý đơn hàng: các cột thẳng hàng, nội dung giữa dòng */
+.admin-table.orders-table {
+  table-layout: fixed;
+  min-width: 1040px;
+}
+#orders .admin-table td {
+  vertical-align: middle;
+}
+#orders .admin-table.orders-table td:nth-child(2) {
+  min-width: 0;
+  white-space: nowrap;
+}
+.admin-table.orders-table th:nth-child(1),
+.admin-table.orders-table td:nth-child(1) { width: 9%; }
+.admin-table.orders-table th:nth-child(2),
+.admin-table.orders-table td:nth-child(2) { width: 15%; }
+.admin-table.orders-table th:nth-child(3),
+.admin-table.orders-table td:nth-child(3) { width: 17%; }
+.admin-table.orders-table th:nth-child(4),
+.admin-table.orders-table td:nth-child(4) { width: 11%; }
+.admin-table.orders-table th:nth-child(5),
+.admin-table.orders-table td:nth-child(5) { width: 9%; }
+.admin-table.orders-table th:nth-child(6),
+.admin-table.orders-table td:nth-child(6) { width: 11%; }
+.admin-table.orders-table th:nth-child(7),
+.admin-table.orders-table td:nth-child(7) { width: 12%; padding-left: 20px; }
+.admin-table.orders-table th:nth-child(8),
+.admin-table.orders-table td:nth-child(8) { width: 16%; }
+
+/* Top 5 khách hàng: các cột cách đều */
+.admin-table.top-customers {
+  table-layout: fixed;
+  min-width: 760px;
+}
+.admin-table.top-customers th:nth-child(1),
+.admin-table.top-customers td:nth-child(1) { width: 24%; }
+.admin-table.top-customers th:nth-child(2),
+.admin-table.top-customers td:nth-child(2) { width: 12%; }
+.admin-table.top-customers th:nth-child(3),
+.admin-table.top-customers td:nth-child(3) { width: 14%; }
+.admin-table.top-customers th:nth-child(4),
+.admin-table.top-customers td:nth-child(4) { width: 16%; padding-left: 24px; }
+.admin-table.top-customers th:nth-child(5),
+.admin-table.top-customers td:nth-child(5) { width: 16%; }
+.admin-table.top-customers th:nth-child(6),
+.admin-table.top-customers td:nth-child(6) { width: 18%; }
+
+/* Thanh công cụ (tìm kiếm, lọc): các ô cùng chiều cao, nút Tìm/Lọc cùng hàng */
+.admin-toolbar {
+  align-items: center;
+}
+.admin-toolbar input,
+.admin-toolbar select,
+.admin-search-btn {
+  height: 40px;
+  box-sizing: border-box;
+}
+.admin-search-btn {
+  padding: 0 20px;
+}
+
+/* Tab trạng thái đơn hàng: bấm vào thì đậm màu lên, có hiệu ứng nhấn */
+.order-tabs a {
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s, transform .1s;
+}
+.order-tabs a:active {
+  transform: scale(.96);
+}
+.order-tabs a.active {
+  border-color: #3a1218;
+  background: #3a1218;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(58, 18, 24, .35);
+}
+.order-tabs a.active b {
+  color: #fff;
+}
+.admin-table.orders-table {
+  min-width: 1120px;
+}
+#orders .admin-table.orders-table td:nth-child(3) {
+  white-space: normal;
+}
+
+/* ---------- Bảng quản trị có đường kẻ chia cột, mỗi dòng đúng một hàng ---------- */
+.admin-layout .admin-table {
+  border: 1px solid var(--line);
+}
+.admin-layout .admin-table th,
+.admin-layout .admin-table td {
+  border-right: 1px solid var(--line);
+  white-space: nowrap;
+}
+.admin-layout .admin-table th:last-child,
+.admin-layout .admin-table td:last-child {
+  border-right: 0;
+}
+.admin-layout .admin-table th {
+  border-right-color: rgba(251, 247, 242, .18);
+}
+.admin-layout .admin-table th:last-child {
+  border-right: 0;
+}
+
+/* Quản lý khách hàng: đủ rộng để tiêu đề và nút thao tác không bị xuống dòng */
+.admin-table.customers-table {
+  table-layout: fixed;
+  min-width: 1120px;
+}
+.admin-box .admin-table.customers-table td:nth-child(4) {
+  white-space: nowrap;
+}
+.admin-table.customers-table th:nth-child(1),
+.admin-table.customers-table td:nth-child(1) { width: 7%; }
+.admin-table.customers-table th:nth-child(2),
+.admin-table.customers-table td:nth-child(2) { width: 16%; }
+.admin-table.customers-table th:nth-child(3),
+.admin-table.customers-table td:nth-child(3) { width: 21%; overflow: hidden; text-overflow: ellipsis; }
+.admin-table.customers-table th:nth-child(4),
+.admin-table.customers-table td:nth-child(4) { width: 14%; }
+.admin-table.customers-table th:nth-child(5),
+.admin-table.customers-table td:nth-child(5) { width: 9%; }
+.admin-table.customers-table th:nth-child(6),
+.admin-table.customers-table td:nth-child(6) { width: 13%; }
+.admin-table.customers-table th:nth-child(7),
+.admin-table.customers-table td:nth-child(7) { width: 20%; }
+
+/* Danh sách sản phẩm: bảng cuộn ngang thay vì ép chữ xuống dòng */
+.admin-table.products-table {
+  min-width: 1000px;
+}
+.admin-box .admin-table.products-table td:nth-child(3),
+.admin-box .admin-table.products-table td:nth-child(4) {
+  white-space: nowrap;
+}
+
+/* Top 5 khách hàng / sách bán chạy: đủ rộng để mỗi dòng gọn một hàng */
+.admin-table.top-customers {
+  min-width: 820px;
+}
+.admin-table.top-books {
+  min-width: 560px;
+}
+.admin-table.top-books th:nth-child(3),
+.admin-table.top-books td:nth-child(3) {
+  padding-left: 24px;
+}
+#orders .admin-table.orders-table td:nth-child(3) {
+  white-space: nowrap;
+}
+.admin-table.orders-table { min-width: 1200px; }
+.admin-table.orders-table th:nth-child(2),
+.admin-table.orders-table td:nth-child(2) { width: 14%; }
+.admin-table.orders-table th:nth-child(3),
+.admin-table.orders-table td:nth-child(3) { width: 19%; }
+.admin-table.orders-table th:nth-child(4),
+.admin-table.orders-table td:nth-child(4) { width: 10%; }
+.admin-table.orders-table th:nth-child(5),
+.admin-table.orders-table td:nth-child(5) { width: 8%; }
+.admin-table.orders-table th:nth-child(6),
+.admin-table.orders-table td:nth-child(6) { width: 10%; }
+
+/* ======================================================================
+   ĐỒNG BỘ CHỮ + CĂN GIỮA CỘT TRONG TRANG QUẢN TRỊ
+   Thang cỡ chữ: tiêu đề khối 24px · tiêu đề phụ 18px · nội dung/bảng/ô nhập 14px · nút, nhãn trạng thái 13px
+   ====================================================================== */
+.admin-layout .admin-table th,
+.admin-layout .admin-table td,
+.admin-layout .admin-table tr.cust-row td,
+.admin-layout .admin-table.top-customers tr.cust-order td {
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+.admin-layout .admin-table th {
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.admin-layout .admin-table td {
+  font-weight: 400;
+}
+.admin-layout .admin-table tr.cust-row td {
+  font-weight: 600;
+}
+.admin-layout .admin-table th:nth-child(n),
+.admin-layout .admin-table td:nth-child(n),
+.admin-layout .admin-table th.num,
+.admin-layout .admin-table td.num,
+.admin-table.top-customers tr.cust-order td:first-child {
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+}
+.admin-layout .admin-table td small {
+  font-size: 13px;
+}
+.admin-layout .admin-table .thumb {
+  margin: 0 auto;
+}
+
+/* Nút và nhãn trạng thái trong bảng: cùng cỡ chữ, cùng chiều cao */
+.admin-box .admin-table td .admin-btn,
+.admin-layout .admin-table .admin-btn {
+  padding: 7px 12px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.admin-layout .status {
+  padding: 5px 12px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* Thanh công cụ, tab, phân trang, ghi chú: cùng cỡ chữ 14px */
+.admin-toolbar input,
+.admin-toolbar select,
+.admin-toolbar label {
+  font-size: 14px;
+}
+.admin-search-btn {
+  font-size: 14px;
+  font-weight: 600;
+}
+.order-tabs a,
+.admin-pager .pagination a {
+  font-size: 14px;
+}
+.stats-note {
+  font-size: 14px;
+}
+.stat-panel h3,
+.admin-layout .stat-panel h3 {
+  font-size: 18px;
+}
+.hbar-row span {
+  font-size: 14px;
+}
+.bar-lbl,
+.bar-val {
+  font-size: 13px;
+}
+.admin-layout .sidebar a {
+  font-size: 14px;
+}
+
+/* Chia cột bảng sản phẩm */
+.admin-table.products-table {
+  table-layout: auto;
+  min-width: 1120px;
+}
+.admin-table.products-table th:nth-child(1),
+.admin-table.products-table td:nth-child(1) { width: 8%; }
+.admin-table.products-table th:nth-child(2),
+.admin-table.products-table td:nth-child(2) { width: 8%; }
+.admin-table.products-table th:nth-child(3),
+.admin-table.products-table td:nth-child(3) { width: auto; }
+.admin-table.products-table th:nth-child(4),
+.admin-table.products-table td:nth-child(4) { width: 1%; }
+.admin-table.products-table th:nth-child(5),
+.admin-table.products-table td:nth-child(5) { width: 11%; }
+.admin-table.products-table th:nth-child(6),
+.admin-table.products-table td:nth-child(6) { width: 12%; }
+.admin-table.products-table th:nth-child(7),
+.admin-table.products-table td:nth-child(7) { width: 16%; }
+
+/* Chia cột lại cho cân đối khi căn giữa */
+.admin-table.top-books th:nth-child(1),
+.admin-table.top-books td:nth-child(1) { width: 10%; }
+.admin-table.top-books th:nth-child(2),
+.admin-table.top-books td:nth-child(2) { width: 40%; }
+.admin-table.top-books th:nth-child(3),
+.admin-table.top-books td:nth-child(3) { width: 20%; }
+.admin-table.top-books th:nth-child(4),
+.admin-table.top-books td:nth-child(4) { width: 30%; }
+.admin-table.top-customers th:nth-child(1),
+.admin-table.top-customers td:nth-child(1) { width: 22%; }
+.admin-table.top-customers th:nth-child(2),
+.admin-table.top-customers td:nth-child(2) { width: 12%; }
+.admin-table.top-customers th:nth-child(3),
+.admin-table.top-customers td:nth-child(3) { width: 12%; }
+.admin-table.top-customers th:nth-child(4),
+.admin-table.top-customers td:nth-child(4) { width: 18%; }
+.admin-table.top-customers th:nth-child(5),
+.admin-table.top-customers td:nth-child(5) { width: 18%; }
+.admin-table.top-customers th:nth-child(6),
+.admin-table.top-customers td:nth-child(6) { width: 18%; }
+
+
+/* Cột tên căn trái */
+.admin-layout .customers-table th:nth-child(2),
+.admin-layout .customers-table td:nth-child(2),
+.admin-layout .products-table th:nth-child(3),
+.admin-layout .products-table td:nth-child(3),
+.admin-layout .orders-table th:nth-child(2),
+.admin-layout .orders-table td:nth-child(2),
+.admin-layout .top-customers th:first-child,
+.admin-layout .top-customers tr.cust-row td:first-child,
+.admin-layout .top-books th:nth-child(2),
+.admin-layout .top-books td:nth-child(2) {
+  text-align: left;
+}
+
+/* Thanh bên (phần đỏ) nhỏ gọn hơn */
+@media (min-width: 861px) {
+  .admin-layout {
+    grid-template-columns: 190px 1fr;
+  }
+  .admin-layout .sidebar {
+    padding: 20px 10px;
+  }
+  .admin-layout .sidebar h2 {
+    font-size: 20px;
+  }
+  .admin-layout .sidebar a {
+    gap: 8px;
+    padding: 10px;
+    font-size: 13px;
+  }
+  .admin-layout .sidebar .ico {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Căn giữa tiêu đề của tất cả các cột trong bảng */
+.table th,
+table th {
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+/* Đảm bảo nội dung các dòng phía dưới vẫn căn trái (hoặc giữ nguyên) */
+.table td,
+table td {
+    text-align: left; /* Hoặc căn theo mặc định của bạn */
+    vertical-align: middle;
+}
+
+/* Tìm class chứa 2 thuộc tính/nút "Giao hàng" và "Hủy đơn" (ví dụ: .action-buttons hoặc .btn-group) */
+/* Thêm Flexbox để ép chúng nằm trên 1 dòng */
+.table td .action-group, 
+.table td .btn-group {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center; /* Căn giữa các nút trong ô nếu muốn */
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa nút Giao hàng và Hủy đơn */
+    white-space: nowrap; /* Tải không cho chữ bên trong bị xuống dòng */
+}
+
+/* Hoặc áp dụng trực tiếp cho các thẻ nút/link nằm trong ô td */
+.table td a,
+.table td button,
+.table td .badge {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0 2px; /* Khoảng cách nhẹ giữa các nút */
+}
+
+/* Ép cột Thao tác & Trạng thái của bảng orders-table thành 1 hàng ngang */
+.orders-table td {
+    white-space: nowrap !important;
+}
+
+.orders-table td form,
+.orders-table td a,
+.orders-table td button {
+    display: inline-flex !important;
+    align-items: center;
+    margin: 0 3px !important;
+}
+
+/* Căn trái các ô nội dung trong cột Thao tác */
+.orders-table td:last-child {
+    text-align: left !important;
+}
+
+/* Định vị các nút dồn về bên trái */
+.orders-table td:last-child form,
+.orders-table td:last-child div {
+    justify-content: flex-start !important;
+}
+
+/* Email (khách hàng), Phân loại (sản phẩm), Địa chỉ giao hàng (đơn hàng): nội dung căn trái, tiêu đề vẫn ở giữa */
+.admin-layout .customers-table td:nth-child(3),
+.admin-layout .products-table td:nth-child(4),
+.admin-layout .orders-table td:nth-child(3) {
+  text-align: left;
+}
+
+/* Form sản phẩm: dùng font của website thay vì font mặc định (monospace) của textarea */
+.pf-fields input,
+.pf-fields select,
+.pf-fields textarea {
+  font-family: var(--sans);
+  line-height: 1.55;
+}
+
+/* ======================================================================
+   Tất cả bảng quản trị: mỗi cột co vừa đúng dòng dài nhất, lề trái = lề phải.
+   Mỗi bảng chỉ có 1 cột "linh hoạt" (tên / email / địa chỉ) nhận phần chỗ trống còn lại.
+   ====================================================================== */
+.admin-layout .admin-table.customers-table,
+.admin-layout .admin-table.products-table,
+.admin-layout .admin-table.orders-table,
+.admin-layout .admin-table.top-customers,
+.admin-layout .admin-table.top-books {
+  table-layout: auto;
+  width: 100%;
+  min-width: 0;
+}
+.admin-layout .admin-table.customers-table th:nth-child(n),
+.admin-layout .admin-table.customers-table td:nth-child(n),
+.admin-layout .admin-table.products-table th:nth-child(n),
+.admin-layout .admin-table.products-table td:nth-child(n),
+.admin-layout .admin-table.orders-table th:nth-child(n),
+.admin-layout .admin-table.orders-table td:nth-child(n),
+.admin-layout .admin-table.top-customers th:nth-child(n),
+.admin-layout .admin-table.top-customers td:nth-child(n),
+.admin-layout .admin-table.top-books th:nth-child(n),
+.admin-layout .admin-table.top-books td:nth-child(n) {
+  width: 1%;
+  padding-left: 18px;
+  padding-right: 18px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+/* Cột linh hoạt */
+.admin-layout .admin-table.customers-table th:nth-child(3),
+.admin-layout .admin-table.customers-table td:nth-child(3),
+.admin-layout .admin-table.products-table th:nth-child(3),
+.admin-layout .admin-table.products-table td:nth-child(3),
+.admin-layout .admin-table.orders-table th:nth-child(3),
+.admin-layout .admin-table.orders-table td:nth-child(3),
+.admin-layout .admin-table.top-customers th:nth-child(1),
+.admin-layout .admin-table.top-customers td:nth-child(1),
+.admin-layout .admin-table.top-books th:nth-child(2),
+.admin-layout .admin-table.top-books td:nth-child(2) {
+  width: auto;
+}
+/* Phân loại: căn giữa để lề hai bên đều nhau ở mọi dòng */
+.admin-layout .admin-table.products-table td:nth-child(4) {
+  text-align: center;
+}
+
+/* ======================================================================
+   Cột tiền căn phải (cả tiêu đề lẫn số liệu)
+   ====================================================================== */
+.admin-layout .admin-table.products-table th:nth-child(5),
+.admin-layout .admin-table.products-table td:nth-child(5),
+.admin-layout .admin-table.orders-table th.num,
+.admin-layout .admin-table.orders-table td.num,
+.admin-layout .admin-table.top-customers th.num:last-child,
+.admin-layout .admin-table.top-customers td.num:last-child,
+.admin-layout .admin-table.top-books th.num,
+.admin-layout .admin-table.top-books td.num {
+  text-align: right;
+  padding-right: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ======================================================================
+   Nút thao tác trong bảng (Xem, Sửa, Khóa, Xóa...)
+   ====================================================================== */
+.admin-layout .admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 6px 12px;
+  border: 1px solid #d8ccbd;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--terra);
+  font: 500 13px/1.2 var(--sans);
+  letter-spacing: .01em;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(43, 20, 25, .06);
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+}
+.admin-layout .admin-btn:hover {
+  border-color: var(--terra);
+  background: var(--terra);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(122, 42, 49, .22);
+  transform: translateY(-1px);
+}
+.admin-layout .admin-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.admin-layout .admin-btn:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 2px;
+}
+/* Nút Xóa: sắc đỏ để dễ phân biệt thao tác nguy hiểm */
+.admin-layout .admin-btn-danger,
+.admin-layout .admin-btn[href^="#deleted"] {
+  border-color: #e3c4c8;
+  color: #9a2b38;
+}
+.admin-layout .admin-btn-danger:hover,
+.admin-layout .admin-btn[href^="#deleted"]:hover {
+  border-color: #9a2b38;
+  background: #9a2b38;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(154, 43, 56, .25);
+}
+
+/* Bảng đơn hàng nhiều cột: khoảng đệm gọn hơn một chút để vừa khung, không phải cuộn ngang */
+.admin-layout .admin-table.orders-table th:nth-child(n),
+.admin-layout .admin-table.orders-table td:nth-child(n) {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+.admin-layout .admin-table.orders-table th.num,
+.admin-layout .admin-table.orders-table td.num {
+  padding-right: 20px;
+}
