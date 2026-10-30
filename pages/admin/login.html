@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>BOOKLY - Admin Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap">
+    <link rel="icon" href="../../assets/images/logo-bookly.png">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+  </head>
+  <body>
+    <main class="admin-login-wrap">
+      <form class="login" id="admin-login-form" novalidate>
+        <img src="../../assets/images/logo-bookly.png" alt="BOOKLY" class="admin-login-logo">
+        <h1>BOOKLY ADMIN</h1>
+        <p class="login-sub">Đăng nhập quản trị viên</p>
+        <input name="username" placeholder="Tên đăng nhập" autocomplete="off" autofocus>
+        <input name="password" type="password" placeholder="Mật khẩu" autocomplete="new-password">
+        <p class="login-error" id="admin-login-error" role="alert" hidden></p>
+        <button class="btn" type="submit">ĐĂNG NHẬP QUẢN TRỊ</button>
+      </form>
+    </main>
+    <script src="../../assets/js/admin/auth.js?v=14"></script>
+  </body>
+</html>
